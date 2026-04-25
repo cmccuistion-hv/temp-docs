@@ -362,6 +362,16 @@ url: /container-plugins/hspc/v3.18.0/index.md
 - [Modifying the Bulk Mapping Mode](/container-plugins/hspc/v3.18.0/quick-reference/appendix.md#modifying-the-bulk-mapping-mode)
 - [Modifying CPU and Memory Resources for the CSI Controller Deployment](/container-plugins/hspc/v3.18.0/quick-reference/appendix.md#modifying-cpu-and-memory-resources-for-the-csi-controller-deployment)
 - [CSI Log Collection](/container-plugins/hspc/v3.18.0/quick-reference/appendix.md#csi-log-collection)
+- [Creating VM Templates with StorageClass Clone](/container-plugins/hspc/v3.18.0/quick-reference/appendix.md#vm-templates-storageclass-clone)
+- [Set host-based copy cloning on the StorageClass](/container-plugins/hspc/v3.18.0/quick-reference/appendix.md#set-host-based-copy-cloning-on-the-storageclass)
+- [Create a DataVolume from an existing PVC](/container-plugins/hspc/v3.18.0/quick-reference/appendix.md#create-a-datavolume-from-an-existing-pvc)
+- [Create a DataVolume from a QCOW2 image](/container-plugins/hspc/v3.18.0/quick-reference/appendix.md#create-a-datavolume-from-a-qcow2-image)
+- [(Optional) Revert the StorageClass clone strategy annotation](/container-plugins/hspc/v3.18.0/quick-reference/appendix.md#optional-revert-the-storageclass-clone-strategy-annotation)
+- [Create a DataSource from the PVC](/container-plugins/hspc/v3.18.0/quick-reference/appendix.md#create-a-datasource-from-the-pvc)
+- [Create a custom VM template](/container-plugins/hspc/v3.18.0/quick-reference/appendix.md#create-a-custom-vm-template)
+- [Verify the template parameters](/container-plugins/hspc/v3.18.0/quick-reference/appendix.md#verify-the-template-parameters)
+- [Create a VM from the template](/container-plugins/hspc/v3.18.0/quick-reference/appendix.md#create-a-vm-from-the-template)
+- [Access the template in the web console](/container-plugins/hspc/v3.18.0/quick-reference/appendix.md#access-the-template-in-the-web-console)
 ## Release Notes
 
 ### [Release Notes](/container-plugins/hspc/v3.18.0/release-notes.md)
@@ -543,6 +553,16 @@ url: /container-plugins/hspc/v3.18.0/quick-reference/index.md
 - [Modifying the Bulk Mapping Mode](/container-plugins/hspc/v3.18.0/quick-reference/appendix.md#modifying-the-bulk-mapping-mode)
 - [Modifying CPU and Memory Resources for the CSI Controller Deployment](/container-plugins/hspc/v3.18.0/quick-reference/appendix.md#modifying-cpu-and-memory-resources-for-the-csi-controller-deployment)
 - [CSI Log Collection](/container-plugins/hspc/v3.18.0/quick-reference/appendix.md#csi-log-collection)
+- [Creating VM Templates with StorageClass Clone](/container-plugins/hspc/v3.18.0/quick-reference/appendix.md#vm-templates-storageclass-clone)
+- [Set host-based copy cloning on the StorageClass](/container-plugins/hspc/v3.18.0/quick-reference/appendix.md#set-host-based-copy-cloning-on-the-storageclass)
+- [Create a DataVolume from an existing PVC](/container-plugins/hspc/v3.18.0/quick-reference/appendix.md#create-a-datavolume-from-an-existing-pvc)
+- [Create a DataVolume from a QCOW2 image](/container-plugins/hspc/v3.18.0/quick-reference/appendix.md#create-a-datavolume-from-a-qcow2-image)
+- [(Optional) Revert the StorageClass clone strategy annotation](/container-plugins/hspc/v3.18.0/quick-reference/appendix.md#optional-revert-the-storageclass-clone-strategy-annotation)
+- [Create a DataSource from the PVC](/container-plugins/hspc/v3.18.0/quick-reference/appendix.md#create-a-datasource-from-the-pvc)
+- [Create a custom VM template](/container-plugins/hspc/v3.18.0/quick-reference/appendix.md#create-a-custom-vm-template)
+- [Verify the template parameters](/container-plugins/hspc/v3.18.0/quick-reference/appendix.md#verify-the-template-parameters)
+- [Create a VM from the template](/container-plugins/hspc/v3.18.0/quick-reference/appendix.md#create-a-vm-from-the-template)
+- [Access the template in the web console](/container-plugins/hspc/v3.18.0/quick-reference/appendix.md#access-the-template-in-the-web-console)
 
 
 
@@ -607,6 +627,10 @@ HSPC does **not** support IPv6. Use IPv4.
 :::
 
 ## Pre-installation Tasks
+
+:::tip
+Before configuring your environment, review the [Hitachi CSI Best Practices Guide](/container-plugins/csi-best-practices/index.md) for recommendations on configuring and managing VSP storage systems and Hitachi CSI in Red Hat OpenShift and Kubernetes environments.
+:::
 
 ### Server Pre-installation
 
@@ -930,6 +954,10 @@ The StorageClass file contains storage settings that are necessary for Storage P
 
 :::tip
 On **OpenShift**, you can optionally use the [OpenShift CSI Console Plugin](/container-plugins/hspc/v3.18.0/quick-reference/csi-console-plugin.md) (Technology Preview) to view Hitachi parameters on a StorageClass and start workflows such as clone, snapshot class, or static PV from the web console. The YAML below is the source of truth for the same fields.
+:::
+
+:::tip
+For large-scale deployments, using **multiple StorageClasses with fewer ports each** (6 or fewer ports per StorageClass) significantly improves volume provisioning performance. See [Improving Volume Provisioning Performance at Scale](/container-plugins/csi-best-practices/openshift.md#provisioning-at-scale) in the CSI Best Practices Guide.
 :::
 
 :::warning
@@ -2067,6 +2095,11 @@ See [Appendix A: Advanced Configuration](/container-plugins/hspc/v3.18.0/quick-r
 - Migrating existing ports of a StorageClass
 - Modifying bulk mapping mode
 - Modifying CPU and memory resources for the CSI Controller deployment
+- Creating VM templates with StorageClass clone
+
+:::tip
+For recommended configuration practices to prevent common issues — including multipath setup, StorageClass design for provisioning performance, and volume limits — see the [CSI Best Practices Guide](/container-plugins/csi-best-practices/index.md).
+:::
 
 
 
@@ -2117,6 +2150,10 @@ There is no in-place migration of existing PV port assignments via Kubernetes. T
 ## Configuring the Maximum LUN Count (SPC\_LUN\_MAX)
 
 By default, HSPC supports up to **256 LUNs** per node. You can increase this up to a maximum of **2048** using the `SPC_LUN_MAX` environment variable.
+
+:::tip
+For host-level OS configuration required to support more than 256 volumes (kernel arguments, MachineConfig for OpenShift, or DaemonSet for RKE2/vanilla Kubernetes), see [Supporting More Than 256 Volumes per Host](/container-plugins/csi-best-practices/openshift.md#more-than-256-volumes) in the CSI Best Practices Guide.
+:::
 
 :::note
 Check your kernel and HBA limits before increasing this value. Exceeding HBA limits can cause instability.
@@ -2215,6 +2252,248 @@ A PowerShell variant is also available for Windows environments. See the `README
 The community-maintained **CSI Log Bundle Viewer** can display the collected logs in a browser-based interface. See [CSI Log Bundle Viewer](/container-plugins/csi-log-bundle-viewer.md).
 :::
 
+## Creating VM Templates with StorageClass Clone \{#vm-templates-storageclass-clone}
+
+You can deploy virtual machines from templates using StorageClass clone strategy options. This is supported only on OpenShift Virtualization. Using this method accelerates VM provisioning and ensures that PVCs created for new VMs support volume resizing.
+
+:::note
+If VMs need disk expansion, you must configure host-based cloning before creating the template. Templates provide a repeatable, maintenance-free way to deploy VMs and ensure DataSource references are correctly set before VM creation.
+:::
+
+:::tip
+For planning guidance on StorageClass clone strategies, expansion compatibility, and lifecycle considerations, see [VM Templates and StorageClass Clone Strategy](/container-plugins/csi-best-practices/openshift.md#vm-templates) in the CSI Best Practices Guide.
+:::
+
+### Set host-based copy cloning on the StorageClass
+```bash
+oc annotate storageclass <storage-class-name> cdi.kubevirt.io/clone-strategy=copy --overwrite
+```
+### Create a DataVolume from an existing PVC
+Create a file named `datavolume_from_pvc_example.yaml` with the following content, then apply it:
+```yaml title="datavolume_from_pvc_example.yaml"
+apiVersion: cdi.kubevirt.io/v1beta1
+kind: DataVolume
+metadata:
+  name: rhel9-golden-b28-frompvc
+  namespace: openshift-virtualization-os-images
+spec:
+  source:
+    pvc:
+      namespace: demo-test
+      name: rhel9-vmb28-fromui2-rootdisk
+  storage:
+    storageClassName: <storage-class-name>
+```
+```bash
+oc apply -f datavolume_from_pvc_example.yaml
+```
+Monitor the DataVolume and PVC copy status:
+```bash
+oc get dv -n openshift-virtualization-os-images
+```
+### Create a DataVolume from a QCOW2 image
+Alternatively, create a DataVolume from a QCOW2 image URL:
+```yaml title="datavolume_from_qcow2_image_example.yaml"
+apiVersion: cdi.kubevirt.io/v1beta1
+kind: DataVolume
+metadata:
+  name: rhel9-golden-jp1
+  namespace: openshift-virtualization-os-images
+spec:
+  source:
+    http:
+      url: "http://10.x.y.z/images/rhel-9.7-x86_64-kvm.qcow2"
+  storage:
+    storageClassName: <storage-class-name>
+    accessModes:
+      - ReadWriteMany
+    resources:
+      requests:
+        storage: 30Gi
+```
+```bash
+oc apply -f datavolume_from_qcow2_image_example.yaml
+```
+### (Optional) Revert the StorageClass clone strategy annotation
+After the DataVolume is created, revert the annotation to the default setting if desired:
+```bash
+oc annotate storageclass <storage-class-name> cdi.kubevirt.io/clone-strategy- --overwrite
+```
+### Create a DataSource from the PVC
+```yaml title="datasource_example.yaml"
+apiVersion: cdi.kubevirt.io/v1beta1
+kind: DataSource
+metadata:
+  name: rhel9-b28-frompvc
+  namespace: openshift-virtualization-os-images
+spec:
+  source:
+    pvc:
+      name: rhel9-golden-b28-frompvc
+      namespace: openshift-virtualization-os-images
+```
+```bash
+oc apply -f datasource_example.yaml
+```
+### Create a custom VM template
+Create `rhel9_template_custom_example.yaml` with the following content. This defines a parameterized RHEL 9 VM template backed by a CDI DataSource, with cloud-init and configurable disk size:
+```yaml title="rhel9_template_custom_example.yaml"
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  name: rhel9-from-datasource-b28           # (1) Template name shown in OpenShift catalog
+  namespace: openshift
+  annotations:
+    openshift.io/display-name: "RHEL 9 - HSPC DataSource-56k"
+    description: "Creates a virtual machine by cloning root disk from a CDI DataSource
+      (image-based provisioning) and configures initial access via cloud-init."
+    tags: "rhel9,linux,kubevirt,virtualization"
+    iconClass: icon-rhel
+    template.openshift.io/bindable: "false"
+    template.kubevirt.io/editable: |
+      /objects[0].spec.template.spec.domain.cpu.cores
+      /objects[0].spec.template.spec.domain.memory.guest
+      /objects[0].spec.dataVolumeTemplates[0].spec.storage.resources.requests.storage
+      /objects[0].spec.template.spec.volumes
+      /objects[0].spec.template.spec.domain.devices.disks
+  labels:
+    template.kubevirt.io/architecture: amd64
+    template.kubevirt.io/type: vm
+    workload.template.kubevirt.io/server: "true"
+    flavor.template.kubevirt.io/medium: "true"
+    name.os.template.kubevirt.io/rhel9: "true"
+    app.kubernetes.io/component: templating
+    app.kubernetes.io/name: custom-templates
+    vm.kubevirt.io/template.namespace: openshift
+parameters:
+  - name: NAME                              # (2) Parameters are filled in at deploy time
+    description: "VirtualMachine name"
+    required: true
+    value: rhel9-vm
+  - name: BOOT_SOURCE_NAME
+    description: "CDI DataSource name"
+    required: true
+    value: rhel9-b28-frompvc               # (3) Must match the DataSource created in step 5
+  - name: BOOT_SOURCE_NAMESPACE
+    description: "Namespace containing the DataSource"
+    required: true
+    value: openshift-virtualization-os-images
+  - name: STORAGE_CLASS
+    description: "StorageClass for the virtual machine root disk (HSPC)"
+    required: true
+    value: vspone-block28-205-sc           # (4) Replace with your HSPC StorageClass name
+  - name: ROOTDISK_SIZE_GI
+    description: "Root disk size in Gi"
+    required: true
+    value: "32"
+  - name: CLOUD_USER
+    description: "cloud-init username"
+    required: true
+    value: "cloud-user"
+  - name: CLOUD_PASSWORD
+    description: "Optional password (leave empty to prefer SSH key)"
+    required: false
+    value: "redhat123"
+  - name: SSH_AUTHORIZED_KEY
+    description: "Optional SSH public key for cloud-init"
+    required: false
+    value: ""
+objects:
+  - apiVersion: kubevirt.io/v1
+    kind: VirtualMachine
+    metadata:
+      name: ${NAME}
+      labels:
+        app: ${NAME}
+    spec:
+      runStrategy: Always
+      dataVolumeTemplates:
+        - apiVersion: cdi.kubevirt.io/v1beta1
+          kind: DataVolume
+          metadata:
+            name: ${NAME}-rootdisk
+            annotations:
+              cdi.kubevirt.io/storage.usePopulator: "false"  # (5) Bypasses CDI populators for direct clone
+          spec:
+            sourceRef:
+              kind: DataSource
+              name: ${BOOT_SOURCE_NAME}
+              namespace: ${BOOT_SOURCE_NAMESPACE}
+            storage:
+              storageClassName: ${STORAGE_CLASS}
+              accessModes: ["ReadWriteMany"]
+              volumeMode: Block               # (6) Block mode required for HSPC + OpenShift Virt
+              resources:
+                requests:
+                  storage: "${ROOTDISK_SIZE_GI}Gi"
+      template:
+        metadata:
+          labels:
+            kubevirt.io/domain: ${NAME}
+            app: ${NAME}
+        spec:
+          domain:
+            firmware:
+              bootloader:
+                efi:
+                  secureBoot: false
+            cpu:
+              sockets: 1
+              cores: 2
+            memory:
+              guest: 4Gi
+            devices:
+              disks:
+                - name: rootdisk
+                  bootOrder: 1
+                  disk: { bus: virtio }
+                - name: cloudinitdisk
+                  disk: { bus: virtio }
+              interfaces:
+                - name: default
+                  model: virtio
+                  masquerade: {}
+              rng: {}
+          networks:
+            - name: default
+              pod: {}
+          volumes:
+            - name: rootdisk
+              dataVolume:
+                name: ${NAME}-rootdisk
+            - name: cloudinitdisk
+              cloudInitNoCloud:
+                userData: |
+                  #cloud-config
+                  user: ${CLOUD_USER}
+                  ssh_pwauth: true
+                  chpasswd:
+                    expire: false
+                    password: ${CLOUD_PASSWORD}
+                  ssh_authorized_keys:
+                    - ${SSH_AUTHORIZED_KEY}
+```
+```bash
+oc apply -f rhel9_template_custom_example.yaml
+```
+After applying, the custom template appears in the OpenShift web console under **Template catalog > User templates**.
+### Verify the template parameters
+```bash
+oc process --parameters openshift//rhel9-from-datasource-b28
+```
+### Create a VM from the template
+```bash
+oc -n openshift process rhel9-from-datasource-b28-frompvc \
+  -p NAME=rhel9-fromb28pvc-2 \
+  -p BOOT_SOURCE_NAME=rhel9-b28-frompvc \
+  -p BOOT_SOURCE_NAMESPACE=openshift-virtualization-os-images \
+  -p STORAGE_CLASS=vspone-block28-205-sc \  # Replace with your StorageClass name
+  -p ROOTDISK_SIZE_GI=81 \
+  | oc -n demo-test apply -f -              # Replace demo-test with your target namespace
+```
+### Access the template in the web console
+In the OpenShift web console, navigate to **Template catalog > User templates** to find and deploy VMs from your custom RHEL 9 template.
+
 
 
 ---
@@ -2223,7 +2502,7 @@ url: /container-plugins/hspc/v3.18.0/release-notes.md
 
 # HSPC v3.18.0 Release Notes
 
-**Document:** RN-92ADPTR141-31 (March 2026)
+**Document:** RN-92ADPTR141-31 (April 2026)
 
 This document provides late-breaking information about Hitachi Storage Plug-in for Containers v3.18.0. It includes information not available when the technical documentation was published, as well as known issues and solutions.
 
@@ -4618,6 +4897,814 @@ Technology Preview features provide early access to upcoming innovations for tes
 - **Support:** [support.hitachivantara.com](https://support.hitachivantara.com/en_us/contact-us.html)
 - **Community:** [community.hitachivantara.com](https://community.hitachivantara.com)
 - **Doc feedback:** [doc.feedback@hitachivantara.com](mailto:doc.feedback@hitachivantara.com) (include document number RN-92ADPTR154-07 and revision level)
+
+
+
+---
+url: /container-plugins/csi-best-practices/index.md
+---
+
+# Hitachi CSI Best Practices Guide
+
+**Document:** MK-SL-445-00 (April 2026) — Initial release
+
+This guide describes best practices for configuring and managing Hitachi Virtual Storage Platform (VSP) storage systems and Hitachi Container Storage Interface (CSI) in Red Hat OpenShift and other Kubernetes environments.
+
+:::note
+This guide applies to the hardware and software listed below. For the latest compatibility information, see the [Hitachi Product Compatibility Guide](https://compatibility.hitachivantara.com/products/hspc).
+:::
+
+## Scope
+
+### Supported Storage Platforms
+
+| Hardware                                     | Models                                       |
+| -------------------------------------------- | -------------------------------------------- |
+| Hitachi Virtual Storage Platform One Block   | Mid-range (B24, B26, B28) and High End       |
+| Hitachi Virtual Storage Platform 5000 series | VSP 5100, 5200, 5500, 5600 (and H variants)  |
+| Hitachi Virtual Storage Platform E series    | VSP E590, E790, E990, E1090 (and H variants) |
+
+### Hitachi CSI Software Components
+
+| Component                                                         | Description                                                                                               |
+| ----------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| Hitachi Storage Plug-in for Containers (HSPC)                     | Main CSI driver and operator — manages volume provisioning, attachment, snapshots, cloning, and expansion |
+| Hitachi Replication Plug-in for Containers (HRPC) and DR Operator | Asynchronous and synchronous replication between clusters; policy-based failover and failback             |
+| Hitachi Storage Plug-in for Prometheus (HSPP)                     | Exposes storage metrics to Prometheus, visualized through Grafana                                         |
+
+### Hitachi Storage Software Features
+
+The following Hitachi SVOS RF features are referenced in this guide:
+
+- Dynamic Provisioning (HDP)
+- Dynamic Tiering (DT)
+- Thin Image (TI) / Thin Image Advanced (TIA)
+- ShadowImage (SI)
+- TrueCopy (TC)
+- Universal Replicator (UR)
+- Global-active device (GAD)
+
+## How to Use This Guide
+
+| Topic                                                                                                     | See                                                                                    |
+| --------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| OpenShift and Kubernetes deployment best practices, VM migration, provisioning performance, volume limits | [OpenShift Best Practices](/container-plugins/csi-best-practices/openshift.md)         |
+| Disaster recovery with HRPC DR Operator, stretched clusters and Stretch PVC                               | [Disaster Recovery](/container-plugins/csi-best-practices/disaster-recovery.md)        |
+| HSPC installation and configuration reference                                                             | [HSPC Quick Reference Guide](/container-plugins/hspc/v3.18.0/quick-reference/index.md) |
+| Supported versions and compatibility matrix                                                               | [Compatibility Matrix](/container-plugins/compatibility.md)                            |
+
+## About Hitachi CSI
+
+Hitachi CSI (Hitachi Container Storage Interface) refers to the full suite of CSI plug-ins and associated components that integrate Hitachi storage platforms with Kubernetes distributions such as Red Hat OpenShift, SUSE Rancher, and other container orchestration environments.
+
+The supported storage platforms include VSP, VSP One Block, and VSP One SDS Cloud in Azure, AWS, and GCP public clouds.
+
+The CSI enables platform operators to dynamically or statically provision and manage volumes from reliable, high-performance Hitachi storage systems for use by virtual machines (VMs) and container workloads. Key capabilities include:
+
+- Snapshots, cloning, and expansion
+- Raw block mode
+- Access modes: RWX, RWO, RWOP
+- Protocol support: Fibre Channel, iSCSI, NVMe over FC, NVMe/TCP
+- Standard PVCs, replicated PVCs for multi-site, and stretched PVCs for metro HA
+- Monitoring via HSPP (Prometheus/Grafana)
+
+
+
+---
+url: /container-plugins/csi-best-practices/openshift.md
+---
+
+# Hitachi CSI and Red Hat OpenShift Best Practices
+
+## Red Hat OpenShift
+
+Red Hat OpenShift is an application platform that leverages Kubernetes to streamline developing, deploying, and managing applications whether on public-cloud, on-premises, hybrid-cloud, or edge architecture. With HSPC, Hitachi storage is seamlessly integrated with OpenShift to provide persistent storage whether applications are deployed on public-cloud, on-premises, or hybrid-cloud environments.
+
+### Prerequisites
+
+Before installing HSPC, configure your storage system:
+
+- In VSP One Block Administrator, ensure the storage pool is configured for Hitachi Dynamic Provisioning (HDP), and the storage port is configured with:
+  - **Connection Type:** P-to-P (Point-to-Point)
+  - **Fabric:** ON
+  - **Security:** Enabled
+
+### Setting Up Multipath on Worker Nodes
+
+Configure multipath on worker nodes to ensure high availability.
+
+**OpenShift (recommended):**
+
+```bash
+# Clone the repository to obtain the multipath MachineConfig sample
+git clone https://github.com/hitachi-vantara/csi-operator-hitachi
+```
+
+```bash
+oc apply -f multipath-machineconfig-sample.yaml
+```
+
+For stretched cluster configurations with GAD, apply the appropriate `multipath.conf` using MachineConfig. See [How to Configure Device Mapper Multipath on Red Hat and SUSE Linux](https://docs.hitachivantara.com) for details.
+
+**SUSE environments:** See the [SUSE Rancher + Hitachi storage guide](https://documentation.suse.com/trd/hitachi/html/gs_virtualization_hitachi-storage/index.html).
+
+### Installing HSPC on OpenShift
+
+Deploy HSPC using the Operator from OperatorHub in the OpenShift web console. See the [HSPC Installation Guide](/container-plugins/hspc/v3.18.0/quick-reference/installation.md) for detailed steps.
+
+### First-Time Volume Attachment
+
+After installing HSPC and deploying a stateful container or VM for the first time, volume attachment may fail. Understanding the provisioning flow helps prevent this:
+
+1. When a PVC/PV is created, the associated volume is created on VSP One Block. Host groups are **not** created on the storage side yet.
+2. When a container or VM is deployed with the PVC, HSPC automatically creates host groups on the associated ports.
+3. When volumes are provisioned to a **new** host/worker node, some environments require a host reboot to recognize newly provisioned volumes. After this first-time reboot, new volumes are recognized automatically.
+4. If you reboot worker nodes after the first volume attachment, Kubernetes/HSPC may evacuate the container/VM to other worker nodes, and the newly rebooted nodes might not recognize HSPC volumes.
+
+**Recommended:** Manually provision a small temporary volume after HSPC creates the host group, then reboot the host to verify the data path (FC zoning or iSCSI) is correctly configured.
+
+***
+
+## Red Hat OpenShift Virtualization
+
+### PVC Volume Mode
+
+For OpenShift Virtualization, HSPC supports **RWX** access mode with the **Block** volume mode only.
+
+### Virtual Machine Creation with Small Volumes (vTPM and UEFI) \{#vtpm-uefi}
+
+In OpenShift Virtualization environments backed by Hitachi CSI, VM creation may fail when vTPM or UEFI state persistence is enabled. These features require the provisioner to create small persistent volumes for state data.
+
+**Issue:** VSP storage systems enforce a minimum volume size of **42 MB**, but OpenShift Virtualization provisions TPM and UEFI state volumes smaller than this limit by default.
+
+**Resolution:** Edit the `StorageProfile` for your StorageClass to specify the minimum supported PVC size of `42Mi`. The example below shows a StorageProfile for a VSP B28-backed StorageClass named `storageclass-hitachi-vsp-b85`:
+
+```yaml title="storageprofile-patch.yaml"
+apiVersion: cdi.kubevirt.io/v1beta1
+kind: StorageProfile
+metadata:
+  annotations:
+    cdi.kubevirt.io/minimumSupportedPvcSize: 42Mi  # (1) Minimum 42 MB to match VSP floor
+  labels:
+    app: containerized-data-importer
+    app.kubernetes.io/component: storage
+    app.kubernetes.io/managed-by: cdi-controller
+    app.kubernetes.io/part-of: hyperconverged-cluster
+    app.kubernetes.io/version: 4.19.12              # (2) Match your OpenShift CDI version
+    cdi.kubevirt.io: ""
+  name: storageclass-hitachi-vsp-b85                # (3) Replace with your StorageClass name
+…
+```
+
+For more details, see the [Red Hat article on minimum PVC size](https://access.redhat.com/articles/7120382) and the [KubeVirt persistent TPM/UEFI documentation](https://kubevirt.io/user-guide/compute/persistent_tpm_and_uefi_state/).
+
+***
+
+## Migration Toolkit for Virtualization (MTV)
+
+Migrating workloads from VMware to OpenShift Virtualization requires a robust automated approach. The Migration Toolkit for Virtualization (MTV) Operator provides comprehensive tools for VM migration with cold and warm migration strategies.
+
+### Migration Types
+
+**Cold Migration:**
+
+- The VM is powered off during migration.
+- MTV copies the entire VM disk and configuration while offline.
+- Higher downtime — the VM is unavailable for the entire migration duration.
+
+**Warm Migration:**
+
+- The VM remains powered on during most of the migration, with a short cutover (\~2–3 minutes).
+- MTV copies VM disks while running, then performs a final short sync at cutover.
+- Disks are transferred in parallel by different pods, making it optimal for large amounts of data distributed across multiple disks.
+
+:::note
+Live migration is available only for migrations **between OpenShift Virtualization clusters** or between namespaces on the same cluster.
+:::
+
+### Accelerating VM Migration with Storage Offload
+
+Hitachi has partnered with Red Hat to provide a storage offload feature in MTV, available as **Technology Preview starting with MTV 2.9** and **generally available for cold migration in MTV 2.11**.
+
+If both your VMware vSphere cluster and OpenShift Virtualization environment are backed by the same VSP One storage system, storage offload significantly streamlines migration:
+
+| Benefit                             | Detail                                                                             |
+| ----------------------------------- | ---------------------------------------------------------------------------------- |
+| Up to 10× faster migration          | Internal testing shows up to 90% reduction in migration time (10 hours → \~1 hour) |
+| No IP network dependency            | VM volume data stays on the VSP storage system                                     |
+| Reduced compute host resource usage | Less CPU and memory spent on migration tasks                                       |
+
+:::note
+As of MTV 2.11, storage offload for **cold migration** is generally available. Storage offload for **warm migration** remains Technology Preview. Check the [MTV release notes](https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/) for current status.
+:::
+
+For more information:
+
+- [Hitachi blog: Replatform Faster with OpenShift + VSP One Storage Offload](https://www.hitachivantara.com/en-us/blog/replatform-faster-openshift-vsp-one-storage-offload)
+- [MTV documentation](https://docs.redhat.com/en/documentation/migration_toolkit_for_virtualization/)
+- [VM migration options with VSP storage systems](https://docs.hitachivantara.com/v/u/en-us/application-optimized-solutions/mk-sl-410)
+- [Configuring MTV with storage offload](https://docs.hitachivantara.com/v/u/en-us/hitachi-integrated-systems/mk-sl-374)
+
+**Installation:** HSPC must be installed to use MTV storage offload.
+
+### Migration Considerations
+
+When migrating VMs with multiple disks:
+
+- **Cold Migration:** Disks are transferred sequentially per VM. Best for VMs with large data on a single disk.
+- **Warm Migration:** Disks are transferred in parallel. Best for VMs with data distributed across multiple disks and minimal downtime requirements.
+
+**Operational considerations:**
+
+- Prepare a dedicated network for VM migration, including iSCSI connections. (For MTV storage offload with Fibre Channel, this may not apply.)
+- Monitor storage processor resource utilization closely during migration.
+- Limit concurrent migrations using the `controller_max_vm_inflight` parameter or the **Max concurrent virtual machine migrations** setting in the GUI (default: up to 20 disks).
+
+***
+
+## Migrating Stateful Containers Across StorageClasses or Clusters
+
+Migrating stateful containers across StorageClasses or between Kubernetes clusters is fully supported using the **Migration Toolkit for Containers (MTC)**. MTC orchestrates migration of both application resources and persistent data.
+
+Hitachi has validated that the HSPC CSI driver integrates with MTC, enabling reliable PVC migration across different StorageClasses or Kubernetes clusters with minimal disruption and preserved data integrity.
+
+:::tip
+If you need to update storage port settings in a StorageClass, see [Migrating Existing Ports of a StorageClass](/container-plugins/hspc/v3.18.0/quick-reference/appendix.md#migrating-existing-ports-of-a-storageclass) in the HSPC Appendix.
+:::
+
+***
+
+## VM Templates and StorageClass Clone Strategy \{#vm-templates}
+
+When deploying VMs from templates in OpenShift Virtualization or upstream KubeVirt, the storage backend determines how PVCs are created. Many CSI drivers support fast-clone mechanisms, which significantly accelerate VM provisioning.
+
+However, the selected clone strategy affects whether resulting PVCs support volume expansion. Plan the cloning approach based on VM lifecycle requirements.
+
+:::warning
+If VMs created from templates are expected to require disk expansion in the future, configure the StorageClass to use a **host-based copy clone strategy**. This ensures that PVCs created for new VMs fully support volume resizing.
+:::
+
+```bash
+oc annotate storageclass <storage-class-name> cdi.kubevirt.io/clone-strategy=copy --overwrite
+```
+
+After creating the template, verify its parameters and deploy a VM:
+
+```bash
+# Check available template parameters
+oc process --parameters openshift//rhel9-from-datasource-b28
+
+# Create a VM from the template
+oc -n openshift process rhel9-from-datasource-b28-frompvc \
+  -p NAME=rhel9-fromb28pvc-2 \
+  -p BOOT_SOURCE_NAME=rhel9-b28-frompvc \
+  -p BOOT_SOURCE_NAMESPACE=openshift-virtualization-os-images \
+  -p STORAGE_CLASS=vspone-block28-205-sc \   # Replace with your StorageClass name
+  -p ROOTDISK_SIZE_GI=81 \
+  | oc -n demo-test apply -f -               # Replace demo-test with your target namespace
+```
+
+:::tip
+For the complete step-by-step procedure — DataVolume creation, DataSource setup, and the full parameterized Template YAML — see [Creating VM Templates with StorageClass Clone](/container-plugins/hspc/v3.18.0/quick-reference/appendix.md#vm-templates-storageclass-clone) in the HSPC Appendix.
+:::
+
+***
+
+## Improving Volume Provisioning Performance at Scale \{#provisioning-at-scale}
+
+In large Kubernetes clusters connected to VSP One Block storage through many ports, volume provisioning times may increase as the environment scales. The number of ports per StorageClass is a key factor.
+
+### Why Multiple Ports Per StorageClass Creates a Bottleneck
+
+In the HSPC CSI driver, StorageClasses define explicit port lists that control volume-to-port mapping. When a StorageClass contains **12 or more ports**, each newly provisioned volume must be mapped to every port listed — increasing API calls and attachment latency.
+
+**Internal testing (70 pods and PVCs, 12 total ports):**
+
+| Configuration                   | Relative Performance |
+| ------------------------------- | -------------------- |
+| 1 StorageClass × 12 ports       | Baseline             |
+| 3 StorageClasses × 4 ports each | **3× faster**        |
+| 6 StorageClasses × 2 ports each | **4× faster**        |
+
+The volume size itself is not a contributing factor.
+
+### Recommended: Use Multiple StorageClasses with Fewer Ports
+
+Instead of a single StorageClass with many ports, use multiple StorageClasses with **6 or fewer ports each**:
+
+```
+Instead of:   SC-1 → 12 ports
+
+Use:          SC-1 → 4 ports
+              SC-2 → 4 ports
+              SC-3 → 4 ports
+```
+
+### Distributing Volume Provisioning with MutatingAdmissionPolicy
+
+To automatically rotate StorageClass selection across multiple StorageClasses, use a **MutatingAdmissionPolicy (MAP)**. See the [Kubernetes MutatingAdmissionPolicy documentation](https://kubernetes.io/docs/reference/access-authn-authz/mutating-admission-policy/).
+
+:::note
+As of the time of this guide's release, MutatingAdmissionPolicy is in **Technology Preview** for Red Hat OpenShift. Verify current support status before deployment.
+:::
+
+**Example: RKE2 environment with three StorageClasses and MAP**
+
+:::note
+The source document presented this example as screenshots. The YAML below is reconstructed from the described structure, standard RKE2/Kubernetes API conventions, and the named StorageClasses (`vsp-5500-112-sc-iscsi-4p-1/2/3`) referenced in the text. The logic and resource types are authoritative; adjust field values to match your environment.
+:::
+
+### Enable the Feature Gate in RKE2
+Add two `kube-apiserver-arg` entries to `/etc/rancher/rke2/config.yaml` — one to enable the internal logic and one to expose the API group so `kubectl` can see the resource:
+```yaml title="/etc/rancher/rke2/config.yaml"
+token: my-shared-secret
+tls-san:
+  - rke2-cl2-ub-master1.rke2cl2-ub.scelab.local
+kube-apiserver-arg:
+  # 1. Enable the internal logic (the "Feature Gate")
+  - "feature-gates=MutatingAdmissionPolicy=true"
+  # 2. Enable the API group so kubectl can see the resource
+  - "runtime-config=admissionregistration.k8s.io/v1beta1=true"
+```
+Restart the RKE2 service, then verify the API group is available:
+```bash
+systemctl restart rke2-server
+
+# Verify the MutatingAdmissionPolicy API is registered
+kubectl api-resources | grep mutatingadmissionpolicy
+```
+### Create multiple StorageClasses
+Create three StorageClasses, each with 4 iSCSI ports and a shared HSPC Secret. The port sets are divided so no single StorageClass maps to more than 4 ports:
+```yaml title="vsp-5500-112-sc-iscsi-4p-1.yaml"
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: vsp-5500-112-sc-iscsi-4p-1  # (1) First StorageClass — ports 1-4
+provisioner: hspc.csi.hitachi.com
+reclaimPolicy: Delete
+volumeBindingMode: Immediate
+allowVolumeExpansion: true
+parameters:
+  serialNumber: "112"               # (2) Storage serial number
+  poolID: "1"                       # (3) HDP pool ID
+  portID: CL1-A,CL2-A,CL3-A,CL4-A  # (4) 4 iSCSI ports only
+  connectionType: iscsi
+  csi.storage.k8s.io/fstype: ext4
+  csi.storage.k8s.io/provisioner-secret-name: "secret-sample"
+  csi.storage.k8s.io/provisioner-secret-namespace: "default"
+  csi.storage.k8s.io/controller-publish-secret-name: "secret-sample"
+  csi.storage.k8s.io/controller-publish-secret-namespace: "default"
+  csi.storage.k8s.io/node-stage-secret-name: "secret-sample"
+  csi.storage.k8s.io/node-stage-secret-namespace: "default"
+  csi.storage.k8s.io/node-publish-secret-name: "secret-sample"
+  csi.storage.k8s.io/node-publish-secret-namespace: "default"
+  csi.storage.k8s.io/controller-expand-secret-name: "secret-sample"
+  csi.storage.k8s.io/controller-expand-secret-namespace: "default"
+```
+Repeat with `vsp-5500-112-sc-iscsi-4p-2` (ports CL5-A,CL6-A,CL7-A,CL8-A) and `vsp-5500-112-sc-iscsi-4p-3` (ports CL9-A,CL10-A,CL11-A,CL12-A).
+```bash
+kubectl apply -f vsp-5500-112-sc-iscsi-4p-1.yaml
+kubectl apply -f vsp-5500-112-sc-iscsi-4p-2.yaml
+kubectl apply -f vsp-5500-112-sc-iscsi-4p-3.yaml
+```
+### Create a MutatingAdmissionPolicy
+The policy intercepts PVC creation on PVCs that carry the `storage.mymap.io/spread=true` label and whose name ends in a numeric ordinal (the StatefulSet naming convention). It extracts the ordinal, computes `ordinal % 3`, and selects the corresponding StorageClass via a JSONPatch mutation:
+```yaml title="hspc-pvc-storageclass-rr-4.yaml"
+apiVersion: admissionregistration.k8s.io/v1beta1
+kind: MutatingAdmissionPolicy
+metadata:
+  name: hspc-pvc-storageclass-rr-4
+spec:
+  # keep Ignore while testing; switch to Fail after validation
+  #failurePolicy: Ignore
+  failurePolicy: Fail
+  reinvocationPolicy: IfNeeded
+
+  matchConstraints:
+    resourceRules:
+    - apiGroups: [""]
+      apiVersions: ["v1"]
+      operations: ["CREATE"]
+      resources: ["persistentvolumeclaims"]
+
+  matchConditions:
+  - name: opted-in
+    # PVC must carry the spread label to be mutated
+    expression: "has(object.metadata.labels) && object.metadata.labels['storage.mymap.io/spread'] == 'true'"
+  - name: ordinal-suffix
+    # PVC name must end in a numeric ordinal (e.g. data-mysts-0, data-mysts-1)
+    expression: "object.metadata.name.matches('.*-[0-9]+$')"
+
+  variables:
+  - name: parts
+    # Split the PVC name on '-' to isolate the ordinal at the end
+    expression: "object.metadata.name.split('-')"
+  - name: ordinal
+    # Parse the last segment as an integer (the StatefulSet pod ordinal)
+    expression: "int(variables.parts[variables.parts.size()-1])"
+  - name: idx
+    # Distribute evenly across 3 StorageClasses using modulo
+    expression: "variables.ordinal % 3"
+  - name: chosenSC
+    expression: >
+      variables.idx == 0 ? 'vsp-5500-112-sc-iscsi-4p-1' :
+      variables.idx == 1 ? 'vsp-5500-112-sc-iscsi-4p-2' :
+      variables.idx == 2 ? 'vsp-5500-112-sc-iscsi-4p-3' :
+                           'vsp-5500-112-sc-iscsi-4p-4' :
+
+  mutations:
+  - patchType: "JSONPatch"
+    jsonPatch:
+      expression: >
+        has(object.spec.storageClassName) ?
+        [ JSONPatch{ op: "replace", path: "/spec/storageClassName", value: variables.chosenSC } ] :
+        [ JSONPatch{ op: "add",     path: "/spec/storageClassName", value: variables.chosenSC } ]
+```
+```bash
+kubectl apply -f hspc-pvc-storageclass-rr-4.yaml
+```
+### Create a MutatingAdmissionPolicyBinding
+The binding activates the policy using a two-layer opt-in: the **namespace** must carry `storage.mymap.io/spread-enabled=true` AND the individual **PVC** must carry `storage.mymap.io/spread=true`. Both selectors must match for the policy to fire:
+```yaml title="hspc-pvc-storageclass-rr-4-binding.yaml"
+apiVersion: admissionregistration.k8s.io/v1beta1
+kind: MutatingAdmissionPolicyBinding
+metadata:
+  name: hspc-pvc-storageclass-rr-4-binding
+spec:
+  policyName: hspc-pvc-storageclass-rr-4   # Must match the MutatingAdmissionPolicy name
+  matchResources:
+    namespaceSelector:
+      matchLabels:
+        storage.mymap.io/spread-enabled: "true"   # (1) Namespace must opt in
+    objectSelector:
+      matchLabels:
+        storage.mymap.io/spread: "true"           # (2) PVC must also carry the spread label
+```
+```bash
+kubectl apply -f hspc-pvc-storageclass-rr-4-binding.yaml
+```
+### Label the namespace and verify StorageClasses
+Label the target namespace to activate the MutatingAdmissionPolicy:
+```bash
+kubectl label namespace demo-test mutation-enabled=true
+```
+:::note
+The binding manifest uses `storage.mymap.io/spread-enabled: "true"` as the `namespaceSelector` label. Ensure the label you apply here matches the `namespaceSelector.matchLabels` in your `MutatingAdmissionPolicyBinding`.
+:::
+Verify the StorageClasses before deploying workloads:
+```bash
+root@rke2-cl2-ub-master1:~/jp-files# kubectl get sc
+```
+```
+NAME                             PROVISIONER             RECLAIMPOLICY  VOLUMEBINDINGMODE  ALLOWVOLUMEEXPANSION  AGE
+vsp-5500-112-sc-iscsi-12ports    hspc.csi.hitachi.com    Delete         Immediate          true                  18h
+vsp-5500-112-sc-iscsi-4p-1       hspc.csi.hitachi.com    Delete         Immediate          true                  27h
+vsp-5500-112-sc-iscsi-4p-2       hspc.csi.hitachi.com    Delete         Immediate          true                  27h
+vsp-5500-112-sc-iscsi-4p-3       hspc.csi.hitachi.com    Delete         Immediate          true                  18h
+```
+The original 12-port StorageClass remains present. The three 4-port StorageClasses (`4p-1`, `4p-2`, `4p-3`) will be used by the MAP for new PVC provisioning.
+:::note
+PVCs must also carry `storage.mymap.io/spread: "true"` on the object itself — add this label in your StatefulSet's `volumeClaimTemplates.metadata.labels` in the next step.
+:::
+Expected output:
+```
+vsp-5500-112-sc-iscsi-4p-1   hspc.csi.hitachi.com   Delete   Immediate   true   ...
+vsp-5500-112-sc-iscsi-4p-2   hspc.csi.hitachi.com   Delete   Immediate   true   ...
+vsp-5500-112-sc-iscsi-4p-3   hspc.csi.hitachi.com   Delete   Immediate   true   ...
+```
+### Deploy a sample StatefulSet and verify PVC distribution
+Two changes are required compared to a standard StatefulSet manifest:
+1. **Add** `storage.mymap.io/spread: "true"` to both `spec.selector.matchLabels` and `spec.template.metadata.labels` — this satisfies the MAP's `objectSelector` in the binding
+2. **Remove** the explicit `storageClassName` from `volumeClaimTemplates` — the MAP assigns it automatically based on the pod ordinal
+```yaml title="demo-StatefulSet-app1-parallel-map.yaml"
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  namespace: demo-test
+  name: hspc-pod-test-map
+spec:
+  podManagementPolicy: "Parallel"    # Provisions all PVCs concurrently — important at scale
+  replicas: 6
+  selector:
+    matchLabels:
+      name: hspc-pod-test-map
+      storage.mymap.io/spread: "true"   # ADD: required for MAP objectSelector
+  template:
+    metadata:
+      labels:
+        name: hspc-pod-test-map
+        storage.mymap.io/spread: "true"   # ADD: propagated to PVCs via volumeClaimTemplates
+    spec:
+      containers:
+      - name: my-busybox
+        image: registry.k8s.io/busybox
+        volumeMounts:
+        - mountPath: "/data"
+          name: sample-volume
+        command: ["sleep", "1000000"]
+        imagePullPolicy: IfNotPresent
+  volumeClaimTemplates:
+  - metadata:
+      name: sample-volume
+    spec:
+      # storageClassName: vsp-5500-112-sc-iscsi-12ports  ← REMOVE this line; MAP assigns SC
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 2Gi
+```
+```bash
+kubectl apply -f demo-StatefulSet-app1-parallel-map.yaml
+```
+Scale the StatefulSet to 9 replicas to clearly observe the round-robin pattern across all three StorageClasses:
+```bash
+kubectl scale sts hspc-pod-test-map -n demo-test --replicas=9
+```
+Review the PVCs and confirm distribution:
+```bash
+kubectl get pvc -n demo-test
+```
+Expected output — 9 PVCs cycling across the three StorageClasses (ordinal % 3):
+```
+NAME                                STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS                   VOLUMEATTRIBUTESCLASS   AGE
+sample-volume-hspc-pod-test-map-0   Bound    pvc-ac973e5-1123-4a30-9ed3-6b8cee7cb87a    2Gi        RWO            vsp-5500-112-sc-iscsi-4p-1     <unset>                 3m26s
+sample-volume-hspc-pod-test-map-1   Bound    pvc-fe2e31e2-b93e-46a2-b544-1932ca1d8080   2Gi        RWO            vsp-5500-112-sc-iscsi-4p-2     <unset>                 3m26s
+sample-volume-hspc-pod-test-map-2   Bound    pvc-2e2b5e3-0202-4587-b13d-4b4a0642d728    2Gi        RWO            vsp-5500-112-sc-iscsi-4p-3     <unset>                 3m26s
+sample-volume-hspc-pod-test-map-3   Bound    pvc-932f7957-1c0e-4096-91f5-5621bc1bc16a   2Gi        RWO            vsp-5500-112-sc-iscsi-4p-1     <unset>                 3m26s
+sample-volume-hspc-pod-test-map-4   Bound    pvc-4fcf9bc1-1a4d-4864-a605-c2e32664a8d5   2Gi        RWO            vsp-5500-112-sc-iscsi-4p-2     <unset>                 3m26s
+sample-volume-hspc-pod-test-map-5   Bound    pvc-d8b2f341-2b4a-4f9c-b318-7e5a9c2d1f84   2Gi        RWO            vsp-5500-112-sc-iscsi-4p-3     <unset>                 3m26s
+sample-volume-hspc-pod-test-map-6   Bound    pvc-9318319b-b9c2-4669-952a-aad43a2c06df   2Gi        RWO            vsp-5500-112-sc-iscsi-4p-1     <unset>                 3m26s
+sample-volume-hspc-pod-test-map-7   Bound    pvc-53a2f6a7-5701-4435-b0aa-a45dbe40561    2Gi        RWO            vsp-5500-112-sc-iscsi-4p-2     <unset>                 3m26s
+sample-volume-hspc-pod-test-map-8   Bound    pvc-a574e5a4-5bd2-406d-b537-4df2150aa30b   2Gi        RWO            vsp-5500-112-sc-iscsi-4p-3     <unset>                 3m26s
+```
+
+***
+
+## Supporting More Than 256 Volumes per Host \{#more-than-256-volumes}
+
+By default, HSPC supports up to **256 volumes per host**. This limitation exists because most Fibre Channel vendors maintain backward compatibility with the SCSI-2 protocol. Although SCSI-3 supports more volumes, many FC implementations still limit volumes per target to 256.
+
+If your environment requires more than 256 volumes per target, configure the `SPC_LUN_MAX` environment variable. The maximum supported value is **2048**.
+
+:::tip
+For the HSPC configuration step to set `SPC_LUN_MAX`, see [Configuring the Maximum LUN Count](/container-plugins/hspc/v3.18.0/quick-reference/appendix.md#configuring-the-maximum-lun-count-spc_lun_max) in the HSPC Appendix.
+:::
+
+:::warning
+Warning: These configuration changes require a host reboot to take effect. Applying this configuration will trigger or
+require a reboot of the affected nodes.
+:::
+
+### OpenShift — MachineConfig (Recommended by Red Hat) \{#lun-boost-openshift}
+
+Create one MachineConfig for each node role (worker and master):
+
+```yaml title="99-worker-lun-boost.yaml"
+apiVersion: machineconfiguration.openshift.io/v1
+kind: MachineConfig
+metadata:
+  name: 99-worker-lun-boost
+  labels:
+    machineconfiguration.openshift.io/role: worker
+spec:
+  kernelArguments:
+    - scsi_mod.max_luns=2048
+    - lpfc.lpfc_max_luns=2048
+  config:
+    ignition:
+      version: 3.2.0
+    storage:
+      files:
+        - path: /etc/modprobe.d/lpfc.conf
+          mode: 0644
+          overwrite: true
+          contents:
+            source: data:text/plain;charset=utf-8;base64,b3B0aW9ucyBscGZjIGxwZmNfbWF4X2x1bnM9MjA0OA==
+        - path: /etc/modprobe.d/scsi_mod.conf
+          mode: 0644
+          overwrite: true
+          contents:
+            source: data:text/plain;charset=utf-8;base64,b3B0aW9ucyBzY3NpX21vZCBtYXhfbHVucz0yMDQ4
+```
+
+```bash
+oc apply -f 99-worker-lun-boost.yaml
+# Verify rollout status
+oc get mcp
+oc describe mcp worker
+```
+
+### RKE2 — DaemonSet (No MachineConfig Available) \{#lun-boost-rke2}
+
+RKE2 does not support MachineConfig. Apply the configuration using a DaemonSet:
+
+```yaml title="rke2-lun-boost.yaml"
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: rke2-lun-boost
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      app: rke2-lun-boost
+  template:
+    metadata:
+      labels:
+        app: rke2-lun-boost
+    spec:
+      hostPID: true
+      hostNetwork: true
+      containers:
+        - name: modify-host
+          image: registry.access.redhat.com/ubi9/ubi:latest
+          securityContext:
+            privileged: true
+          command: ["/bin/bash", "-c"]
+          args:
+            - |
+              echo "options scsi_mod max_luns=2048" > /host/etc/modprobe.d/scsi_mod.conf
+              echo "options lpfc lpfc_max_luns=2048" > /host/etc/modprobe.d/lpfc.conf
+              nsenter --mount=/host/proc/1/ns/mnt grub2-mkconfig -o /boot/grub2/grub.cfg || true
+              sleep infinity
+          volumeMounts:
+            - name: host
+              mountPath: /host
+      volumes:
+        - name: host
+          hostPath:
+            path: /
+```
+
+```bash
+kubectl apply -f rke2-lun-boost.yaml
+```
+
+### RHEL Kubernetes — DaemonSet (Vanilla, Non-OpenShift, Non-RKE2) \{#lun-boost-rhel}
+
+For vanilla Kubernetes deployments on RHEL:
+
+```yaml title="lun-boost-ds.yaml"
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: lun-boost
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      app: lun-boost
+  template:
+    metadata:
+      labels:
+        app: lun-boost
+    spec:
+      hostPID: true
+      hostNetwork: true
+      containers:
+        - name: lun-boost
+          image: registry.access.redhat.com/ubi9/ubi
+          securityContext:
+            privileged: true
+          command: ["/bin/bash", "-c"]
+          args:
+            - |
+              echo "options scsi_mod max_luns=2048" > /host/etc/modprobe.d/scsi_mod.conf
+              echo "options lpfc lpfc_max_luns=2048" > /host/etc/modprobe.d/lpfc.conf
+              nsenter --mount=/host/proc/1/ns/mnt grub2-mkconfig -o /boot/grub2/grub.cfg || true
+              sleep infinity
+          volumeMounts:
+            - name: host
+              mountPath: /host
+      volumes:
+        - name: host
+          hostPath:
+            path: /
+```
+
+```bash
+kubectl apply -f lun-boost-ds.yaml
+```
+
+
+
+---
+url: /container-plugins/csi-best-practices/disaster-recovery.md
+---
+
+# Disaster Recovery Best Practices
+
+This section describes best practices for disaster recovery (DR) using Hitachi Replication Plug-in for Containers (HRPC) and the DR Operator, as well as high-availability architectures using multisite OpenShift Stretch Clusters with Stretch PVC.
+
+***
+
+## Hitachi Replication Plug-in for Containers (HRPC)
+
+[HRPC](/container-plugins/hrpc/index.md) is the Hitachi CSI component for automating asynchronous and synchronous replication of volumes between clusters, supporting migration and disaster recovery use cases.
+
+HRPC version 3.17 introduced the **DR Operator**, a Kubernetes-native disaster recovery orchestrator. The DR Operator automates and simplifies DR operations between primary and secondary storage systems, managing replication workflows such as:
+
+- Split
+- Failover
+- Failback
+- Resynchronization
+
+These operations support TrueCopy (TC) and Universal Replicator (UR) pairs, ensuring minimal downtime and consistent data protection across sites.
+
+:::note
+HSPC is a required dependency for HRPC. Ensure that HSPC is configured before installing HRPC. See the [HSPC Installation Guide](/container-plugins/hspc/v3.18.0/quick-reference/installation.md).
+:::
+
+**Installation prerequisites:** Internet connectivity is required to the following registries:
+
+- `registry.redhat.io`
+- `registry.hitachivantara.com`
+- `registry.k8s.io`
+
+### Related Documentation
+
+| Document                                                                                                                          | Description                                                                           |
+| --------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| [HRPC Documentation](/container-plugins/hrpc/index.md)                                                                            | Version index for HRPC — installation, replication operations, failover, and appendix |
+| [HRPC DR Operator Guide](/container-plugins/hrpc/v3.17.4/dr-operator.md)                                                          | Install and use the DR Operator for policy-based DR                                   |
+| [HRPC Failover and Failback](/container-plugins/hrpc/v3.17.4/failover-failback.md)                                                | Failover and failback procedures                                                      |
+| [Product Compatibility Guide](https://compatibility.hitachivantara.com/products/hspc)                                             | HRPC compatibility matrix                                                             |
+| [DR and Data Mobility in Hybrid Cloud Using HRPC](https://docs.hitachivantara.com/v/u/en-us/hitachi-integrated-systems/mk-sl-374) | Reference architecture for container and virtualization DR                            |
+
+***
+
+## Advantages of the DR Operator
+
+The DR Operator provides key advantages over manual, per-PVC disaster recovery operations:
+
+- **Eliminates manual, per-PVC operations** — Automates replication workflows at the application level.
+- **Scalable DR** — Handles large Kubernetes environments with many PVCs.
+- **User-defined policies** — Supports application-level DR policies.
+- **Application-aware DR** — Performs failover and failback based on defined policies, preserving application consistency.
+
+The DR Operator is analogous to VMware Site Recovery Manager (SRM), providing similar automated DR orchestration for container and virtualization workloads. For a reference architecture demonstrating DR for OpenShift Virtualization workloads, see:
+
+- [Hitachi Integrated Solutions with Red Hat OpenShift Virtualization and VSP One Block](https://docs.hitachivantara.com/v/u/en-us/hitachi-integrated-systems/mk-sl-374)
+
+***
+
+## Disaster Recovery with the DR Operator
+
+The DR Operator manages a group of PVCs defined as a DR policy. When a failover is triggered, the DR Operator:
+
+1. Splits the replication pairs for the defined PVC group.
+2. Promotes the secondary volumes to primary.
+3. Reattaches the volumes in the secondary cluster.
+4. Restores application availability at the DR site.
+
+For failback, the DR Operator reverses the process and resynchronizes data to the original primary site.
+
+:::tip
+For detailed DR Operator configuration and workflow instructions, see the HRPC documentation and the [DR and Data Mobility reference architecture guide](https://docs.hitachivantara.com/v/u/en-us/hitachi-integrated-systems/mk-sl-374).
+:::
+
+***
+
+## Multisite OpenShift Stretch Cluster and Stretch PVC \{#stretch-cluster}
+
+Hitachi Vantara, in collaboration with Red Hat, has designed, validated, and implemented a modern high-availability (HA) architecture using a **stretched OpenShift cluster with VSP One Block**.
+
+This solution combines:
+
+- **Stretched storage** using Global-active device (GAD) technology
+- **Hitachi Storage Plug-in for Containers (HSPC)** for automated provisioning and management of standard and stretched persistent volumes
+
+### Architecture Overview
+
+A stretched OpenShift cluster spans two data centers connected over a metro network. GAD maintains synchronous mirror copies of all data on both sides. HSPC automates the creation and lifecycle management of Stretch PVCs — PVCs that are transparently accessible from either site.
+
+### Benefits
+
+**High resiliency and business continuity for mission-critical applications:**
+
+- **Zero downtime** in the event of a storage system failure or partial network failure
+- **Minimal downtime** (a few minutes) in the event of host failure, total network failure, or site failure
+
+**Application and data mobility and load balancing:**
+
+- Live virtual machine migration between two data centers
+- Seamless migration of stateful applications between two data centers
+
+### Configuration Notes
+
+- Stretch PVC pools can be created only on a **virtual storage machine (VSM)**.
+- Mounting a PVC created **from** a Stretch PVC is not supported.
+- Multi-AZ configuration is not supported by the cloud model of VSP One SDS Block.
+- For GAD pair split and resync operations, use the `GadPairAction` custom resource introduced in HSPC v3.18.0. See [Stretched PVC](/container-plugins/hspc/v3.18.0/quick-reference/provisioning.md#stretched-pvc) in the HSPC Quick Reference.
+
+### Related Resources
+
+| Resource                                           | Link                                                                                                                               |
+| -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| Community blog: OpenShift Stretch Cluster with VSP | [community.hitachivantara.com](https://community.hitachivantara.com/blogs/jeff-chen/2025/07/15/openshift-stretch-cluster-with-vsp) |
+| Reference architecture guide                       | [Application-Optimized Solutions: MK-SL-383](https://docs.hitachivantara.com/v/u/en-us/application-optimized-solutions/mk-sl-383)  |
+| HSPC Stretched PVC documentation                   | [Stretched PVC — HSPC Quick Reference](/container-plugins/hspc/v3.18.0/quick-reference/provisioning.md#stretched-pvc)              |
 
 
 

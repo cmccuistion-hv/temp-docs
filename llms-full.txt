@@ -1138,19 +1138,23 @@ Create a VolumeSnapshotClass before using snapshots:
 On **OpenShift**, you can create a `VolumeSnapshotClass` from the HitachiCSI view on a StorageClass. See [OpenShift CSI Console Plugin](/container-plugins/hspc/v3.18.0/quick-reference/csi-console-plugin.md#create-volumesnapshotclass) and compare with the manifest below.
 :::
 
-```yaml title="vsc-sample.yaml"
+```yaml title="volumesnapshotclass-sample.yaml"
 apiVersion: snapshot.storage.k8s.io/v1
 kind: VolumeSnapshotClass
 metadata:
-  name: vsc-sample
+  name: snapshotclass-sample
 driver: hspc.csi.hitachi.com
 deletionPolicy: Delete
 parameters:
+  poolID: "1"
+  retentionPeriod: "1"
   csi.storage.k8s.io/snapshotter-secret-name: "secret-sample"
   csi.storage.k8s.io/snapshotter-secret-namespace: "default"
-  csi.storage.k8s.io/snapshotter-list-secret-name: "secret-sample"
-  csi.storage.k8s.io/snapshotter-list-secret-namespace: "default"
 ```
+
+:::note
+`retentionPeriod` is optional. Specify a value between 1 and 12,288 hours to create immutable snapshots. Immutable snapshots are supported only on VSP One B20 series storage systems.
+:::
 
 Create a snapshot of a PVC:
 
@@ -1160,7 +1164,7 @@ kind: VolumeSnapshot
 metadata:
   name: snapshot-sample
 spec:
-  volumeSnapshotClassName: vsc-sample
+  volumeSnapshotClassName: snapshotclass-sample
   source:
     persistentVolumeClaimName: pvc-sample
 ```
@@ -1594,7 +1598,7 @@ kubectl get volumesnapshot
 
 ```
 NAME              READYTOUSE   SOURCEPVC    SOURCESNAPSHOTCONTENT   RESTORESIZE   SNAPSHOTCLASS   SNAPSHOTCONTENT
-snapshot-sample   true         pvc-sample                           1Gi           vsc-sample      snapcontent-xxxxxxxx
+snapshot-sample   true         pvc-sample                           1Gi           snapshotclass-sample      snapcontent-xxxxxxxx
 ```
 
 ## Verifying Snapshot Content
@@ -8409,7 +8413,7 @@ kubectl get volumesnapshot
 
 ```
 NAME              READYTOUSE   SOURCEPVC    SOURCESNAPSHOTCONTENT   RESTORESIZE   SNAPSHOTCLASS   SNAPSHOTCONTENT
-snapshot-sample   true         pvc-sample                           1Gi           vsc-sample      snapcontent-xxxxxxxx
+snapshot-sample   true         pvc-sample                           1Gi           snapshotclass-sample      snapcontent-xxxxxxxx
 ```
 
 ## Verifying Snapshot Content
@@ -8610,19 +8614,23 @@ spec:
 
 Create a VolumeSnapshotClass before using snapshots:
 
-```yaml title="vsc-sample.yaml"
+```yaml title="volumesnapshotclass-sample.yaml"
 apiVersion: snapshot.storage.k8s.io/v1
 kind: VolumeSnapshotClass
 metadata:
-  name: vsc-sample
+  name: snapshotclass-sample
 driver: hspc.csi.hitachi.com
 deletionPolicy: Delete
 parameters:
+  poolID: "1"
+  retentionPeriod: "1"
   csi.storage.k8s.io/snapshotter-secret-name: "secret-sample"
   csi.storage.k8s.io/snapshotter-secret-namespace: "default"
-  csi.storage.k8s.io/snapshotter-list-secret-name: "secret-sample"
-  csi.storage.k8s.io/snapshotter-list-secret-namespace: "default"
 ```
+
+:::note
+`retentionPeriod` is optional. Specify a value between 1 and 12,288 hours to create immutable snapshots. Immutable snapshots are supported only on VSP One B20 series storage systems.
+:::
 
 Create a snapshot of a PVC:
 
@@ -8632,7 +8640,7 @@ kind: VolumeSnapshot
 metadata:
   name: snapshot-sample
 spec:
-  volumeSnapshotClassName: vsc-sample
+  volumeSnapshotClassName: snapshotclass-sample
   source:
     persistentVolumeClaimName: pvc-sample
 ```

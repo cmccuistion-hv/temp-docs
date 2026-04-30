@@ -262,6 +262,9 @@ url: /container-plugins/hspc/v3.18.0/index.md
 - [Requirements](/container-plugins/hspc/v3.18.0/quick-reference/storage-classes.md#requirements-1)
 - [Creating a Stretched PVC](/container-plugins/hspc/v3.18.0/quick-reference/storage-classes.md#creating-a-stretched-pvc)
 - [GAD Pair Split and Resync](/container-plugins/hspc/v3.18.0/quick-reference/storage-classes.md#gad-pair-split-and-resync)
+- [Stretched PVC with Adaptive Data Reduction (ADR)](/container-plugins/hspc/v3.18.0/quick-reference/storage-classes.md#stretched-pvc-with-adaptive-data-reduction-adr)
+- [Cloning from a Stretched PVC](/container-plugins/hspc/v3.18.0/quick-reference/storage-classes.md#cloning-from-stretched-pvc)
+- [Monitoring Stretched PVC Usage in Pods](/container-plugins/hspc/v3.18.0/quick-reference/storage-classes.md#monitoring-stretched-pvc-usage-in-pods)
 
 ### [Provisioning Volumes](/container-plugins/hspc/v3.18.0/quick-reference/provisioning.md)
 
@@ -279,6 +282,9 @@ url: /container-plugins/hspc/v3.18.0/index.md
 - [Verifying Snapshot Content](/container-plugins/hspc/v3.18.0/quick-reference/snapshots.md#verifying-snapshot-content)
 - [Restoring from a Snapshot](/container-plugins/hspc/v3.18.0/quick-reference/snapshots.md#restoring-from-a-snapshot)
 - [Deleting a Snapshot](/container-plugins/hspc/v3.18.0/quick-reference/snapshots.md#deleting-a-snapshot)
+- [Snapshots for a Stretched PVC](/container-plugins/hspc/v3.18.0/quick-reference/snapshots.md#snapshots-for-a-stretched-pvc)
+- [Create the VolumeSnapshotClass](/container-plugins/hspc/v3.18.0/quick-reference/snapshots.md#create-the-volumesnapshotclass)
+- [Create the VolumeSnapshot](/container-plugins/hspc/v3.18.0/quick-reference/snapshots.md#create-the-volumesnapshot)
 
 ### [Expanding Volumes](/container-plugins/hspc/v3.18.0/quick-reference/expanding-volumes.md)
 
@@ -286,6 +292,7 @@ url: /container-plugins/hspc/v3.18.0/index.md
 - [Edit the PVC to request more storage](/container-plugins/hspc/v3.18.0/quick-reference/expanding-volumes.md#edit-the-pvc-to-request-more-storage)
 - [Verify the PVC capacity has been updated](/container-plugins/hspc/v3.18.0/quick-reference/expanding-volumes.md#verify-the-pvc-capacity-has-been-updated)
 - [Verify the filesystem was expanded inside the Pod](/container-plugins/hspc/v3.18.0/quick-reference/expanding-volumes.md#verify-the-filesystem-was-expanded-inside-the-pod)
+- [Expanding a Stretched PVC](/container-plugins/hspc/v3.18.0/quick-reference/expanding-volumes.md#expanding-a-stretched-pvc)
 
 ### [Upgrade & Uninstall](/container-plugins/hspc/v3.18.0/quick-reference/uninstalling.md)
 
@@ -356,6 +363,10 @@ url: /container-plugins/hspc/v3.18.0/index.md
 - [Scheduling or Creation Failures](/container-plugins/hspc/v3.18.0/quick-reference/troubleshooting.md#scheduling-or-creation-failures)
 - [Virtual LDEV ID Errors (HSPC0x0000b007)](/container-plugins/hspc/v3.18.0/quick-reference/troubleshooting.md#virtual-ldev-id-errors-hspc0x0000b007)
 - [Advanced Configuration](/container-plugins/hspc/v3.18.0/quick-reference/troubleshooting.md#advanced-configuration)
+- [Stretched PVC Issues](/container-plugins/hspc/v3.18.0/quick-reference/troubleshooting.md#stretched-pvc-issues)
+- [Creating a Stretched PVC — Volumes Already Created on Storage System](/container-plugins/hspc/v3.18.0/quick-reference/troubleshooting.md#creating-a-stretched-pvc--volumes-already-created-on-storage-system)
+- [Stretched PVC — Pair Status Abnormal](/container-plugins/hspc/v3.18.0/quick-reference/troubleshooting.md#stretched-pvc--pair-status-abnormal)
+- [Stretched PVC — Host Failure](/container-plugins/hspc/v3.18.0/quick-reference/troubleshooting.md#stretched-pvc--host-failure)
 
 ### [Appendix](/container-plugins/hspc/v3.18.0/quick-reference/appendix.md)
 
@@ -377,6 +388,10 @@ url: /container-plugins/hspc/v3.18.0/index.md
 - [Verify the template parameters](/container-plugins/hspc/v3.18.0/quick-reference/appendix.md#verify-the-template-parameters)
 - [Create a VM from the template](/container-plugins/hspc/v3.18.0/quick-reference/appendix.md#create-a-vm-from-the-template)
 - [Access the template in the web console](/container-plugins/hspc/v3.18.0/quick-reference/appendix.md#access-the-template-in-the-web-console)
+- [Stretched PVC — Additional Operations](/container-plugins/hspc/v3.18.0/quick-reference/appendix.md#stretched-pvc--additional-operations)
+- [Checking Information on Stretched PVCs](/container-plugins/hspc/v3.18.0/quick-reference/appendix.md#checking-stretched-pvc-info)
+- [Deleting a Stretched PVC](/container-plugins/hspc/v3.18.0/quick-reference/appendix.md#deleting-a-stretched-pvc)
+- [Forcibly Deleting a Stretched PVC](/container-plugins/hspc/v3.18.0/quick-reference/appendix.md#forcibly-deleting-a-stretched-pvc)
 ## Release Notes
 
 ### [Release Notes](/container-plugins/hspc/v3.18.0/release-notes.md)
@@ -458,6 +473,9 @@ url: /container-plugins/hspc/v3.18.0/quick-reference/index.md
 - [Requirements](/container-plugins/hspc/v3.18.0/quick-reference/storage-classes.md#requirements-1)
 - [Creating a Stretched PVC](/container-plugins/hspc/v3.18.0/quick-reference/storage-classes.md#creating-a-stretched-pvc)
 - [GAD Pair Split and Resync](/container-plugins/hspc/v3.18.0/quick-reference/storage-classes.md#gad-pair-split-and-resync)
+- [Stretched PVC with Adaptive Data Reduction (ADR)](/container-plugins/hspc/v3.18.0/quick-reference/storage-classes.md#stretched-pvc-with-adaptive-data-reduction-adr)
+- [Cloning from a Stretched PVC](/container-plugins/hspc/v3.18.0/quick-reference/storage-classes.md#cloning-from-stretched-pvc)
+- [Monitoring Stretched PVC Usage in Pods](/container-plugins/hspc/v3.18.0/quick-reference/storage-classes.md#monitoring-stretched-pvc-usage-in-pods)
 
 ### [Provisioning Volumes](/container-plugins/hspc/v3.18.0/quick-reference/provisioning.md)
 
@@ -475,6 +493,9 @@ url: /container-plugins/hspc/v3.18.0/quick-reference/index.md
 - [Verifying Snapshot Content](/container-plugins/hspc/v3.18.0/quick-reference/snapshots.md#verifying-snapshot-content)
 - [Restoring from a Snapshot](/container-plugins/hspc/v3.18.0/quick-reference/snapshots.md#restoring-from-a-snapshot)
 - [Deleting a Snapshot](/container-plugins/hspc/v3.18.0/quick-reference/snapshots.md#deleting-a-snapshot)
+- [Snapshots for a Stretched PVC](/container-plugins/hspc/v3.18.0/quick-reference/snapshots.md#snapshots-for-a-stretched-pvc)
+- [Create the VolumeSnapshotClass](/container-plugins/hspc/v3.18.0/quick-reference/snapshots.md#create-the-volumesnapshotclass)
+- [Create the VolumeSnapshot](/container-plugins/hspc/v3.18.0/quick-reference/snapshots.md#create-the-volumesnapshot)
 
 ### [Expanding Volumes](/container-plugins/hspc/v3.18.0/quick-reference/expanding-volumes.md)
 
@@ -482,6 +503,7 @@ url: /container-plugins/hspc/v3.18.0/quick-reference/index.md
 - [Edit the PVC to request more storage](/container-plugins/hspc/v3.18.0/quick-reference/expanding-volumes.md#edit-the-pvc-to-request-more-storage)
 - [Verify the PVC capacity has been updated](/container-plugins/hspc/v3.18.0/quick-reference/expanding-volumes.md#verify-the-pvc-capacity-has-been-updated)
 - [Verify the filesystem was expanded inside the Pod](/container-plugins/hspc/v3.18.0/quick-reference/expanding-volumes.md#verify-the-filesystem-was-expanded-inside-the-pod)
+- [Expanding a Stretched PVC](/container-plugins/hspc/v3.18.0/quick-reference/expanding-volumes.md#expanding-a-stretched-pvc)
 
 ### [Upgrade & Uninstall](/container-plugins/hspc/v3.18.0/quick-reference/uninstalling.md)
 
@@ -552,6 +574,10 @@ url: /container-plugins/hspc/v3.18.0/quick-reference/index.md
 - [Scheduling or Creation Failures](/container-plugins/hspc/v3.18.0/quick-reference/troubleshooting.md#scheduling-or-creation-failures)
 - [Virtual LDEV ID Errors (HSPC0x0000b007)](/container-plugins/hspc/v3.18.0/quick-reference/troubleshooting.md#virtual-ldev-id-errors-hspc0x0000b007)
 - [Advanced Configuration](/container-plugins/hspc/v3.18.0/quick-reference/troubleshooting.md#advanced-configuration)
+- [Stretched PVC Issues](/container-plugins/hspc/v3.18.0/quick-reference/troubleshooting.md#stretched-pvc-issues)
+- [Creating a Stretched PVC — Volumes Already Created on Storage System](/container-plugins/hspc/v3.18.0/quick-reference/troubleshooting.md#creating-a-stretched-pvc--volumes-already-created-on-storage-system)
+- [Stretched PVC — Pair Status Abnormal](/container-plugins/hspc/v3.18.0/quick-reference/troubleshooting.md#stretched-pvc--pair-status-abnormal)
+- [Stretched PVC — Host Failure](/container-plugins/hspc/v3.18.0/quick-reference/troubleshooting.md#stretched-pvc--host-failure)
 
 ### [Appendix](/container-plugins/hspc/v3.18.0/quick-reference/appendix.md)
 
@@ -573,6 +599,10 @@ url: /container-plugins/hspc/v3.18.0/quick-reference/index.md
 - [Verify the template parameters](/container-plugins/hspc/v3.18.0/quick-reference/appendix.md#verify-the-template-parameters)
 - [Create a VM from the template](/container-plugins/hspc/v3.18.0/quick-reference/appendix.md#create-a-vm-from-the-template)
 - [Access the template in the web console](/container-plugins/hspc/v3.18.0/quick-reference/appendix.md#access-the-template-in-the-web-console)
+- [Stretched PVC — Additional Operations](/container-plugins/hspc/v3.18.0/quick-reference/appendix.md#stretched-pvc--additional-operations)
+- [Checking Information on Stretched PVCs](/container-plugins/hspc/v3.18.0/quick-reference/appendix.md#checking-stretched-pvc-info)
+- [Deleting a Stretched PVC](/container-plugins/hspc/v3.18.0/quick-reference/appendix.md#deleting-a-stretched-pvc)
+- [Forcibly Deleting a Stretched PVC](/container-plugins/hspc/v3.18.0/quick-reference/appendix.md#forcibly-deleting-a-stretched-pvc)
 
 
 
@@ -1202,11 +1232,8 @@ spec:
 ## Snapshots \{#snapshots}
 
 :::note
-
-- If the volume has been expanded, verify that the operation has successfully completed before creating the volume snapshot. See [Expanding Volumes](/container-plugins/hspc/v3.18.0/quick-reference/expanding-volumes.md) for details.
-- Flush the data before creating a snapshot for data consistency. For example, temporarily remove the Pod.
-- This feature is not supported on VSP One SDS Block.
-  :::
+If the volume has been expanded, verify that the operation has successfully completed before creating the volume snapshot. See [Expanding Volumes](/container-plugins/hspc/v3.18.0/quick-reference/expanding-volumes.md) for details. Flush the data before creating a snapshot for data consistency. For example, temporarily remove the Pod. This feature is not supported on VSP One SDS Block.
+:::
 
 :::note
 If your environment is Kubernetes, install Snapshot CRDs and Snapshot Controller per cluster. See [https://github.com/kubernetes-csi/external-snapshotter](https://github.com/kubernetes-csi/external-snapshotter). For Snapshot CRDs, use v1. If Snapshot Alpha or Beta CRDs are present in your environment, remove them before installing Snapshot v1 CRDs.
@@ -1275,11 +1302,8 @@ spec:
 ## Cloning a PVC \{#cloning-a-pvc}
 
 :::note
-
-- If the volume is expanded, confirm that expansion has completed before executing this feature. See [Expanding Volumes](/container-plugins/hspc/v3.18.0/quick-reference/expanding-volumes.md) for details.
-- Flush the data before cloning for data consistency. For example, temporarily remove the Pod.
-- This feature is not supported on VSP One SDS Block.
-  :::
+If the volume is expanded, confirm that expansion has completed before executing this feature. See [Expanding Volumes](/container-plugins/hspc/v3.18.0/quick-reference/expanding-volumes.md) for details. Flush the data before cloning for data consistency. For example, temporarily remove the Pod. This feature is not supported on VSP One SDS Block.
+:::
 
 Clone an existing PVC:
 
@@ -1410,20 +1434,86 @@ The following diagram shows the data path connections used by Stretched PVC (str
 
 ### Requirements
 
-- Two storage systems at two separate sites with the same software version
-- **Global Active Device (GAD)** license on both storage systems
-- Remote replication paths (inter-site links) configured between both storage systems
-- Virtual storage machines with the same serial number and model on both sites
+:::note
+Stretched PVC supports only **Fibre Channel** and **iSCSI** connections.
+:::
+
+**Cluster requirements:**
+
+| Item                          | Requirement                                                                                                                  |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| Cluster configuration         | A single Kubernetes or OpenShift cluster (stretched cluster) spanning two sites, with storage systems allocated at each site |
+| REST API connection           | HSPC must be able to communicate with the storage systems at both the primary and secondary sites via the REST API           |
+| Data path connection          | Each node must be able to perform data communication with the storage systems at both the primary and secondary sites        |
+| Resource group / VSM settings | Each node must be able to access one or more resource groups or VSMs from the storage systems at both sites                  |
+
+**Storage system requirements (both sites):**
+
+| Item                     | Requirement                                                                                                                                                                                                                                                                                                                                              |
+| ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Supported models         | VSP One Block High End, VSP One Block 20 series, VSP E series, VSP 5000 series, VSP F350/F370/F700/F900, VSP G350/G370/G700/G900                                                                                                                                                                                                                         |
+| License                  | Global Active Device (GAD) license — see the Global-Active Device User Guide                                                                                                                                                                                                                                                                             |
+| Virtual storage machines | For each storage system, create one or more VSMs. Primary and secondary VSMs must have the same serial number and model. Use VSMs exclusively for HSPC. When using the same combination of storage systems from multiple clusters: use the same VSMs for each cluster, and ensure the primary-site/secondary-site pairing is consistent across clusters. |
+| Users and user groups    | Create a user group with **Storage Administrator (View & Modify)** and **Security Administrator** privileges, and add users to it.                                                                                                                                                                                                                       |
+| Remote paths             | Create remote paths. The same path group ID must be used for both the primary site and the secondary site.                                                                                                                                                                                                                                               |
+| Quorum disks             | Create quorum disks. The same quorum disk ID must be used for both the primary site and the secondary site.                                                                                                                                                                                                                                              |
+
+**Compatibility with other features:**
+
+| Feature                 | Compatible with Stretched PVC?                                                                                                        |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| Volume snapshots        | Yes — see [Snapshots for a Stretched PVC](/container-plugins/hspc/v3.18.0/quick-reference/snapshots.md#snapshots-for-a-stretched-pvc) |
+| Volume cloning          | Yes — see [Cloning from a Stretched PVC](#cloning-from-stretched-pvc)                                                                 |
+| Volume expansion        | Yes                                                                                                                                   |
+| Raw block volume        | Yes                                                                                                                                   |
+| ReadWriteMany           | Yes                                                                                                                                   |
+| ReadOnlyMany            | Yes                                                                                                                                   |
+| Adaptive data reduction | Yes                                                                                                                                   |
+| Static provisioning     | No                                                                                                                                    |
+
+**Using a standard PVC in a stretched cluster:**
+
+To use a regular (non-stretched) PVC in a stretched cluster, configure resource groups in advance (see [Resource Partitioning](#resource-partitioning)).
+
+:::note
+For host groups, use ports that are **not** used by Stretched PVCs. To control which site a Pod is deployed to, use the **Node Affinity** or **Node Selector** features of Kubernetes/OpenShift.
+:::
 
 ### Creating a Stretched PVC
 
-Create a StorageClass with `replicationType: stretched` and both storage systems configured:
+When HSPC receives the Secret and StorageClass for a Stretched PVC, it creates volumes at both the primary and secondary sites and generates a global-active device pair. Use Storage Navigator to manage the status of the global-active device pair between creation and deletion of the Stretched PVC.
 
-```yaml title="sc-stretched.yaml"
+#### Create the Secret
+```yaml title="secret-sample-stretched.yaml"
+apiVersion: v1
+kind: Secret
+metadata:
+  name: secret-sample-stretched
+  namespace: hvplugin
+type: Opaque
+stringData:
+  primarySerial: "11111"              # (1) Storage system serial number at the primary site
+  primaryURL: https://172.16.0.1      # (2) Storage system REST API URL at the primary site
+  primaryUser: primary-user1          # (3) Storage system user at the primary site
+  primaryPassword: primary-password1  # (4) Password of the storage system user at the primary site
+  secondarySerial: "22222"            # (5) Storage system serial number at the secondary site
+  secondaryURL: https://172.16.0.2    # (6) Storage system REST API URL at the secondary site
+  secondaryUser: secondary-user1      # (7) Storage system user at the secondary site
+  secondaryPassword: secondary-password1 # (8) Password of the storage system user at the secondary site
+  virtualStorageSerialNumber: "3333"  # (9) Virtual storage system serial number
+```
+:::note
+The virtual serial number must be the same at both the primary and secondary sites. If you want to use separate VSMs, create a separate Secret for each VSM.
+:::
+:::warning
+After creating a Stretched PVC using a secret that specifies primary and secondary, you **cannot** interchange the primary and secondary values in that secret.
+:::
+#### Create the StorageClass
+```yaml title="sc-sample-stretched.yaml"
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: sc-stretched
+  name: sc-sample-stretched
   annotations:
     kubernetes.io/description: Hitachi Storage Plug-in for Containers
 provisioner: hspc.csi.hitachi.com
@@ -1431,49 +1521,46 @@ reclaimPolicy: Delete
 volumeBindingMode: Immediate
 allowVolumeExpansion: true
 parameters:
-  replicationType: stretched
-  primaryPoolID: "1"
-  primaryPortID: CL1-A
-  secondaryPoolID: "2"
-  secondaryPortID: CL1-A
-  copyGroupName: copy-group-sample
-  copyPairName: copy-pair-sample
-  quorumID: "0"
-  csi.storage.k8s.io/fstype: ext4
-  csi.storage.k8s.io/node-publish-secret-name: "secret-stretched"
+  connectionType: fc
+  replicationType: stretched              # (1)
+  copyGroupName: "spc-copy-group-name"    # (2) Optional
+  copyPairName: "spc-copy-pair-name"      # (3) Optional
+  consistencyGroupId: "1"                 # (4) Optional
+  quorumID: "30"                          # (5)
+  primaryPoolID: "10"                     # (6)
+  primaryPortID: CL1-A,CL2-A             # (7)
+  secondaryPoolID: "20"                   # (8)
+  secondaryPortID: CL1-F                  # (9)
+  csi.storage.k8s.io/node-publish-secret-name: "secret-sample-stretched"
   csi.storage.k8s.io/node-publish-secret-namespace: "default"
-  csi.storage.k8s.io/provisioner-secret-name: "secret-stretched"
+  csi.storage.k8s.io/provisioner-secret-name: "secret-sample-stretched"
   csi.storage.k8s.io/provisioner-secret-namespace: "default"
-  csi.storage.k8s.io/controller-publish-secret-name: "secret-stretched"
+  csi.storage.k8s.io/controller-publish-secret-name: "secret-sample-stretched"
   csi.storage.k8s.io/controller-publish-secret-namespace: "default"
-  csi.storage.k8s.io/node-stage-secret-name: "secret-stretched"
+  csi.storage.k8s.io/node-stage-secret-name: "secret-sample-stretched"
   csi.storage.k8s.io/node-stage-secret-namespace: "default"
-  csi.storage.k8s.io/controller-expand-secret-name: "secret-stretched"
+  csi.storage.k8s.io/controller-expand-secret-name: "secret-sample-stretched"
   csi.storage.k8s.io/controller-expand-secret-namespace: "default"
 ```
-
-The Stretched PVC Secret must include both primary and secondary storage credentials:
-
-```yaml title="secret-stretched.yaml"
-apiVersion: v1
-kind: Secret
-metadata:
-  name: secret-stretched
-type: Opaque
-data:
-  primaryURL: <base64-encoded-primary-url>
-  primaryUser: <base64-encoded-primary-user>
-  primaryPassword: <base64-encoded-primary-password>
-  primarySerial: <base64-encoded-primary-serial>
-  secondaryURL: <base64-encoded-secondary-url>
-  secondaryUser: <base64-encoded-secondary-user>
-  secondaryPassword: <base64-encoded-secondary-password>
-  secondarySerial: <base64-encoded-secondary-serial>
-  virtualStorageSerialNumber: <base64-encoded-virtual-serial>
+| #   | Parameter                    | Description                                                                                                                                                                                     |
+| --- | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| (1) | `replicationType: stretched` | Identifies this as a Stretched PVC StorageClass                                                                                                                                                 |
+| (2) | `copyGroupName`              | Optional. Unique, case-sensitive, 1–29 characters. **Must start with `spc-` prefix** — omitting the prefix will cause an error.                                                                 |
+| (3) | `copyPairName`               | Optional. Unique, case-sensitive, 1–31 characters. **Must start with `spc-` prefix** — omitting the prefix will cause an error. The `copyPairName` name is unique to the copy group.            |
+| (4) | `consistencyGroupId`         | Optional. Consistency group ID (decimal number). `copyPairName` and `consistencyGroupId` are applied only when a custom `copyGroupName` is provided — otherwise the system uses default values. |
+| (5) | `quorumID`                   | ID of the quorum disk                                                                                                                                                                           |
+| (6) | `primaryPoolID`              | Storage system pool ID at the primary site                                                                                                                                                      |
+| (7) | `primaryPortID`              | Storage system port ID at the primary site. Use commas to delimit multiple ports for multipath.                                                                                                 |
+| (8) | `secondaryPoolID`            | Storage system pool ID at the secondary site                                                                                                                                                    |
+| (9) | `secondaryPortID`            | Storage system port ID at the secondary site                                                                                                                                                    |
+#### Create a PVC and verify it is Bound
+Create a PVC that references the StorageClass from the previous step, then verify:
+```bash
+kubectl get pvc <pvc-name>
 ```
-
-:::warning
-After creating a Stretched PVC using a secret that specifies primary and secondary, you **cannot** interchange the primary and secondary values in that secret.
+The PVC `STATUS` must be `Bound`.
+:::note
+Creating a Stretched PVC takes more time than creating a regular PVC.
 :::
 
 ### GAD Pair Split and Resync
@@ -1516,6 +1603,108 @@ kubectl describe gadpairaction gadpairaction-sample -n <namespace>
 :::note
 Stretched PVC metrics collection by HSPP is **not supported**.
 :::
+
+### Stretched PVC with Adaptive Data Reduction (ADR)
+
+HSPC supports Adaptive Data Reduction (ADR) for Stretched PVCs provisioned using global-active device volumes. Add `storageEfficiency` and `storageEfficiencyMode` parameters to the StorageClass:
+
+#### Create the StorageClass with ADR parameters
+```yaml title="sc-stretched-adr.yaml"
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: sc-sample-stretched-adr
+  annotations:
+    kubernetes.io/description: Hitachi Storage Plug-in for Containers
+provisioner: hspc.csi.hitachi.com
+reclaimPolicy: Delete
+volumeBindingMode: Immediate
+allowVolumeExpansion: true
+parameters:
+  connectionType: fc
+  quorumID: "4"
+  primaryPoolID: "1"
+  primaryPortID: CL1-A
+  secondaryPoolID: "2"
+  secondaryPortID: CL1-B
+  storageEfficiency: "CompressionDeduplication"    # (1)
+  storageEfficiencyMode: "PostProcess"              # (2)
+  csi.storage.k8s.io/node-publish-secret-name: "secret-sample-stretched"
+  csi.storage.k8s.io/node-publish-secret-namespace: "default"
+  csi.storage.k8s.io/provisioner-secret-name: "secret-sample-stretched"
+  csi.storage.k8s.io/provisioner-secret-namespace: "default"
+  csi.storage.k8s.io/controller-publish-secret-name: "secret-sample-stretched"
+  csi.storage.k8s.io/controller-publish-secret-namespace: "default"
+  csi.storage.k8s.io/node-stage-secret-name: "secret-sample-stretched"
+  csi.storage.k8s.io/node-stage-secret-namespace: "default"
+  csi.storage.k8s.io/controller-expand-secret-name: "secret-sample-stretched"
+  csi.storage.k8s.io/controller-expand-secret-namespace: "default"
+```
+| Parameter               | Description                                     |
+| ----------------------- | ----------------------------------------------- |
+| `storageEfficiency`     | `"CompressionDeduplication"` or `"Compression"` |
+| `storageEfficiencyMode` | `"PostProcess"` or `"Inline"`                   |
+#### Create a PVC and verify it is Bound
+Create a PVC by specifying the StorageClass created in the previous step, then verify:
+```bash
+kubectl get pvc <pvc-name>
+```
+The PVC `STATUS` must be `Bound`.
+:::note
+Creating a Stretched PVC takes more time than creating a regular PVC.
+:::
+
+### Cloning from a Stretched PVC \{#cloning-from-stretched-pvc}
+
+You can replicate Stretched PVC data to a regular PVC by creating a snapshot from the Stretched PVC and then cloning a new regular PVC from that snapshot.
+
+**Before you begin**, configure the storage system for use with a regular PVC:
+
+| Item                | Requirement                                                                                                                                                                                            |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Storage system      | Specify either the primary site or the secondary site                                                                                                                                                  |
+| Storage system user | Assign both the resource group for the virtual storage machine used for the Stretched PVC and the resource group for the regular PVC. Do not assign other resource groups.                             |
+| LDEV                | Assign the required LDEV IDs to the resource group for the regular PVC. The assigned IDs must use **sequential numbers** — if the numbers are not sequential, the operations might not work correctly. |
+
+#### Create the Stretched PVC
+See [Creating a Stretched PVC](#creating-a-stretched-pvc).
+#### Create a snapshot of the Stretched PVC
+See [Snapshots for a Stretched PVC](/container-plugins/hspc/v3.18.0/quick-reference/snapshots.md#snapshots-for-a-stretched-pvc).
+#### Create a Secret for the regular PVC
+See [Configuration](/container-plugins/hspc/v3.18.0/quick-reference/configuration.md).
+#### Create a StorageClass for the regular PVC
+See [StorageClass Settings](#storageclass-settings).
+#### Create a PVC from the Stretched PVC snapshot
+```yaml title="pvc-from-stretched-snapshot-sample.yaml"
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-from-stretched-snapshot-sample
+spec:
+  dataSource:
+    name: VolumeSnapshot-stretched
+    kind: VolumeSnapshot
+    apiGroup: snapshot.storage.k8s.io
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: sc-sample
+```
+```bash
+kubectl apply -f pvc-from-stretched-snapshot-sample.yaml
+```
+
+### Monitoring Stretched PVC Usage in Pods
+
+Similar to a regular PVC, you can use a Stretched PVC from a Pod. When you create a Pod, HSPC outputs a log message showing the serial numbers of the storage systems that successfully connected to the Pod:
+
+```
+[INFO]storages used for publish : [11111 22222]
+```
+
+Typically, both the primary and secondary site storage systems are used. However, depending on system status, only one storage system (either primary or secondary) may be connected.
 
 
 
@@ -1756,6 +1945,43 @@ Create a new PVC with `dataSource` referencing the snapshot. See [Snapshots](/co
 kubectl delete volumesnapshot snapshot-sample
 ```
 
+## Snapshots for a Stretched PVC
+
+You can create and manage snapshots of Global Active Device (GAD) volumes used by a Stretched PVC.
+
+### Create the VolumeSnapshotClass
+```yaml title="volumesnapshotclass-stretched-sample.yaml"
+apiVersion: snapshot.storage.k8s.io/v1
+kind: VolumeSnapshotClass
+metadata:
+  name: snapshotclass-sample-stretched
+driver: hspc.csi.hitachi.com
+deletionPolicy: Delete
+parameters:
+  poolID: "1"
+  serialNumber: "715035"                                                         # Required for Stretched PVC snapshots
+  csi.storage.k8s.io/snapshotter-secret-name: "secret-sample-stretched"
+  csi.storage.k8s.io/snapshotter-secret-namespace: "default"
+```
+:::note
+The `serialNumber` parameter is required for Stretched PVC snapshots. Use the Secret created for the Stretched PVC (which contains both primary and secondary credentials).
+:::
+### Create the VolumeSnapshot
+```yaml title="volumesnapshot-stretched-sample.yaml"
+apiVersion: snapshot.storage.k8s.io/v1
+kind: VolumeSnapshot
+metadata:
+  name: VolumeSnapshot-stretched
+spec:
+  volumeSnapshotClassName: snapshotclass-sample-stretched
+  source:
+    persistentVolumeClaimName: <stretched-pvc-name>
+```
+```bash
+kubectl apply -f volumesnapshotclass-stretched-sample.yaml
+kubectl apply -f volumesnapshot-stretched-sample.yaml
+```
+
 
 
 ---
@@ -1771,15 +1997,8 @@ Confirm completion of volume expansion with `kubectl get pvc`, which displays th
 :::
 
 :::note
-Volume expansion has the following restrictions:
-
-- On VSP One B20 series storage systems, you cannot expand a cloned PVC to a capacity greater than its parent volume.
-- The minimum additional size for volume expansion is 1 GiB.
-- The maximum additional size for volume expansion is 7 TiB, or a value that does not exceed the warning threshold of pool capacity. If you add more than 7 TiB, run the command again.
-- Volume capacity cannot be reduced.
-- If `allowVolumeExpansion` of the StorageClass is set to `false`, a PersistentVolume created with this setting cannot be expanded.
-- The size obtained by `kubectl get pv <PV-name> -o yaml` is not updated after expansion. To get the updated size, use `kubectl get pv <PV-name>`, which is displayed in `CAPACITY`.
-  :::
+Volume expansion has the following restrictions: On VSP One B20 series storage systems, you cannot expand a cloned PVC to a capacity greater than its parent volume. The minimum additional size for volume expansion is 1 GiB. The maximum additional size is 7 TiB, or a value that does not exceed the warning threshold of pool capacity — if you add more than 7 TiB, run the command again. Volume capacity cannot be reduced. If `allowVolumeExpansion` of the StorageClass is set to `false`, a PersistentVolume created with this setting cannot be expanded. The size obtained by `kubectl get pv <PV-name> -o yaml` is not updated after expansion; use `kubectl get pv <PV-name>` to see the updated CAPACITY.
+:::
 
 :::caution
 Use the `kubectl` command to change the size of an LDEV created with Storage Plug-in for Containers. After you apply the patch for volume expansion, if the PVC is not attached to a Pod, you must expand the filesystem from within the node.
@@ -1820,6 +2039,31 @@ kubectl exec -it pod-sample -- df -h /data
 
 :::note
 For HRPC replication volumes, expand the **secondary site first**, then the primary. See [Expanding Replication Volumes](/container-plugins/hrpc/v3.17.4/expanding-volumes.md).
+:::
+
+## Expanding a Stretched PVC
+
+You can expand storage volumes on both a Stretched PVC and a Stretched PVC with ADR.
+
+:::note
+Expansion is **not allowed** if the GAD volume has an existing snapshot. Delete the snapshot before expanding.
+:::
+
+**Before you begin:**
+
+- Verify that the `allowVolumeExpansion` parameter in the StorageClass is set to `true`. If the parameter is set to `false`, you will not be able to expand the storage volume.
+- Verify that the GAD pair is healthy and in **Pair** state during volume expansion.
+
+Run the following command to expand an existing Stretched PVC:
+
+```bash
+kubectl patch pvc <pvc-name> --patch \
+  '{"spec":{"resources":{"requests":{"storage": "16Gi"}}}}' \
+  -n <namespace>
+```
+
+:::note
+The storage size must be greater than the current PVC size for the expansion to succeed.
 :::
 
 
@@ -2317,6 +2561,49 @@ See [Appendix A: Advanced Configuration](/container-plugins/hspc/v3.18.0/quick-r
 For recommended configuration practices to prevent common issues — including multipath setup, StorageClass design for provisioning performance, and volume limits — see the [CSI Best Practices Guide](/container-plugins/csi-best-practices/index.md).
 :::
 
+***
+
+## Stretched PVC Issues
+
+### Creating a Stretched PVC — Volumes Already Created on Storage System
+
+If Stretched PVC creation does not complete (the status does not change to `Bound`), run the following to check the error details:
+
+```bash
+kubectl describe pvc <PVC-name>
+```
+
+If the following error message appears, volumes have already been created on the storage system. Deleting the PVC before the status changes to `Bound` will leave those volumes on the storage system without being deleted.
+
+```
+failed to provision volume with StorageClass ... : volumes created : [{id:100 serial:11111} {id:200 serial:22222}]
+```
+
+After the PVC is deleted, use **Storage Navigator** to delete the volumes and the associated LUNs. For VSP One Block storage systems, use **VSP One Block Administrator** to delete the volumes and the associated LUNs. Then change the virtual LDEV IDs of the deleted volumes to **unassigned (65534)**.
+
+### Stretched PVC — Pair Status Abnormal
+
+If a failure occurs in a storage system, the global-active device pairs configuring the Stretched PVC might have an abnormal status. If an error occurs when using the Stretched PVC, or if a Pod connected to the Stretched PVC becomes unavailable:
+
+1. Refer to the **Global-Active Device User Guide** and perform recovery for the storage system failure and the pair status.
+2. If recovery from the failure is difficult, you can create a volume clone from either the primary or secondary storage system and continue using that clone as a regular PVC. See [Cloning from a Stretched PVC](/container-plugins/hspc/v3.18.0/quick-reference/storage-classes.md#cloning-from-stretched-pvc).
+
+### Stretched PVC — Host Failure
+
+If a host fails, the status of the Pod running on that host becomes `Terminating` and the Pod enters an abnormal state. To resume the Pod on a healthy host:
+
+1. Forcibly delete the Pod:
+
+```bash
+kubectl delete pod <Pod-name> --grace-period=0 --force
+```
+
+2. Delete the `VolumeAttachment` related to the Stretched PVC the Pod was using:
+
+```bash
+kubectl delete volumeattachment <VolumeAttachment-name>
+```
+
 
 
 ---
@@ -2713,6 +3000,53 @@ oc -n openshift process rhel9-from-datasource-b28-frompvc \
 ```
 ### Access the template in the web console
 In the OpenShift web console, navigate to **Template catalog > User templates** to find and deploy VMs from your custom RHEL 9 template.
+
+***
+
+## Stretched PVC — Additional Operations
+
+### Checking Information on Stretched PVCs \{#checking-stretched-pvc-info}
+
+After a Stretched PVC is created, a PV is created with storage system resource information stored in `spec.csi.volumeAttributes`. Run the following to inspect:
+
+```bash
+kubectl describe pv <PV-name>
+```
+
+Check the `VolumeAttributes` section. The following parameters are included:
+
+| Parameter           | Description                                                                 |
+| ------------------- | --------------------------------------------------------------------------- |
+| `nickname`          | Nickname of the created LDEV (same for both the primary and secondary site) |
+| `primarySerial`     | Serial number of the storage system at the primary site                     |
+| `primaryVolumeID`   | ID of the LDEV created at the primary site                                  |
+| `secondarySerial`   | Serial number of the storage system at the secondary site                   |
+| `secondaryVolumeID` | ID of the LDEV created at the secondary site                                |
+| `copyGroupName`     | The copy group name                                                         |
+| `copyPairName`      | The copy pair name                                                          |
+
+### Deleting a Stretched PVC
+
+You can delete a Stretched PVC in the same way as deleting a regular PVC. When a Stretched PVC is deleted, the global-active device pair and the volumes of the storage systems at both the primary and secondary sites are also deleted.
+
+:::note
+Deleting a Stretched PVC takes more time than deleting a regular PVC. If the Stretched PVC cannot be deleted, follow the guidance in the error message. If the problem persists, see [Forcibly Deleting a Stretched PVC](#forcibly-deleting-a-stretched-pvc) below.
+:::
+
+### Forcibly Deleting a Stretched PVC \{#forcibly-deleting-a-stretched-pvc}
+
+To delete a Stretched PVC, the storage systems at both the primary and secondary sites must be running normally. If a failure occurs on either storage system or on the global-active device pair, normal deletion will fail. To force-delete:
+
+1. Check the information about the resources created at both sites. See [Checking Information on Stretched PVCs](#checking-stretched-pvc-info).
+2. Delete the PVC and the PV:
+
+```bash
+kubectl patch pvc <pvc-name> --type merge -p '{"metadata":{"finalizers":null}}'
+kubectl delete pvc <pvc-name>
+kubectl delete pv <pv-name>
+```
+
+3. Based on the information from step 1, use Storage Navigator to delete the global-active device pair, volumes, and associated LUNs. Then change the virtual LDEV IDs of the deleted volumes to **unassigned (65534)**.
 
 
 
@@ -6291,6 +6625,10 @@ Static provisioning allows existing storage system volumes to be used as PVCs wi
 Static provisioning is **not supported** for Stretched PVCs.
 :::
 
+:::note
+You can create only **one PV for one volume**. If you create more than one PV for the same volume, the functions supported by HSPC might not work properly.
+:::
+
 ### Requirements
 
 **VSP Family and VSP One Block:**
@@ -6339,6 +6677,7 @@ spec:
     volumeAttributes:
       connectionType: fc                   # fc, iscsi, or nvme-fc
       ports: CL1-A, CL2-A                  # Required for fc or iscsi; not needed for nvme-fc
+      # portIPs: "192.168.10.10, 192.168.10.11"  # Required for iSCSI when the LDEV is assigned to a specific resource group
     volumeHandle: 01--scsi--900000070010--50000--spc-c3d46c5a71
     #  Format: 01--<io-protocol>--<storage-device-id>--<ldev-id-decimal>--<ldev-nickname>
     #  io-protocol: "scsi" for fc/iscsi, "nvme" for nvme-fc
@@ -6356,6 +6695,10 @@ spec:
     namespace: default
 ```
 
+:::caution
+`volumeMode` defaults to `Filesystem`. If the LDEV was used as a **raw block volume**, specify `volumeMode: Block`. Specifying `Filesystem` for an LDEV that was used as a raw block volume will format it as a file system, **deleting existing data**.
+:::
+
 ### volumeHandle Format
 
 ```
@@ -6368,6 +6711,10 @@ spec:
 | `storage-device-id` | 12-digit value: 6-digit fixed prefix for the storage model + 6-digit serial number. Check via REST API Reference Guide for each model. |
 | `ldev-id`           | Decimal LDEV ID — check via storage management software                                                                                |
 | `ldev-nickname`     | LDEV nickname — check via storage management software                                                                                  |
+
+:::note
+The default `persistentVolumeReclaimPolicy` is **`Retain`**. When `Retain` is set, the PV and LDEV are **not** deleted when the PVC is deleted — the PV enters a Released state. To reuse the LDEV, you must re-create the PV. If you want the PV and LDEV deleted automatically when the PVC is deleted, specify `Delete` (and also set the `pv.kubernetes.io/provisioned-by` annotation).
+:::
 
 ### Creating a PV — VSP One SDS Block
 
@@ -6488,13 +6835,18 @@ HSPC deletes both the primary and secondary LDEVs and removes the GAD pair. Use 
 
 ### Forcibly Deleting a Stretched PVC
 
-If a normal PVC delete hangs (e.g., after a site failure), remove the finalizer:
+If a site failure or GAD pair failure prevents normal PVC deletion, the delete operation will hang. To force-delete a Stretched PVC:
+
+1. Check the information about the resources created at the primary and secondary sites using `kubectl describe pv <pv-name>` (see [Checking Stretched PVC Volume Attributes](#checking-stretched-pvc-volume-attributes)).
+2. Delete the PVC and the PV:
 
 ```bash
 kubectl patch pvc <pvc-name> --type merge -p '{"metadata":{"finalizers":null}}'
+kubectl delete pvc <pvc-name>
+kubectl delete pv <pv-name>
 ```
 
-Then manually clean up the LDEVs and GAD pair on both storage systems via Storage Navigator.
+3. Based on the information checked in step 1, use Storage Navigator to delete the global-active device pair, volumes, and the associated LUNs. Then change the virtual LDEV IDs of the deleted volumes to **unassigned (65534)**.
 
 ### Failover
 
@@ -6662,6 +7014,15 @@ If the PVC is not attached to a Pod, the capacity increases but the PVC capacity
 ## Expanding a Stretched PVC
 
 Volume expansion for Stretched PVCs follows the same procedure as regular PVC expansion. HSPC expands both the primary and secondary GAD volumes and updates the pair.
+
+Before expanding a Stretched PVC, verify the following:
+
+:::note
+
+- Verify that `allowVolumeExpansion` is set to `true` in the StorageClass. If set to `false`, the volume cannot be expanded.
+- Verify that the GAD pair is **healthy and in Pair state** before and during expansion.
+- The requested storage size must be greater than the current PVC capacity for the expansion to succeed.
+  :::
 
 
 
@@ -6895,14 +7256,25 @@ For the latest supported versions, see the Release Notes.
 | Host group   | Created automatically by HSPC using predefined naming rules. Do not use host groups created by HSPC for any other purpose. |
 | User account | Must be in the built-in **Storage administrator (View & Modify)** user group, or a customized group with equivalent roles. |
 | License      | Dynamic Provisioning (DP), Hitachi Thin Image (HTI), Hitachi Thin Image Advanced (HTIA) for VSP One Block                  |
-| SVP          | Single and dual SVP configurations are supported. Not required for VSP One SDS Block.                                      |
+| SVP          | Single and dual SVP configurations are supported. Not required for VSP One Block.                                          |
+| Interface    | Fibre Channel, iSCSI, and NVMe over FC                                                                                     |
+
+:::note
+NVMe/TCP is not supported for VSP family and VSP One Block.
+:::
 
 ### Storage Requirements (VSP One SDS Block)
 
 | Component                        | Requirement                                                                      |
 | -------------------------------- | -------------------------------------------------------------------------------- |
+| Version                          | Refer to the release notes for details.                                          |
+| Interface                        | Fibre Channel, iSCSI, and NVMe/TCP                                               |
 | User account (no multitenancy)   | Must be assigned the Storage role.                                               |
 | User account (with multitenancy) | See [Multitenancy Functionality Settings](#multitenancy-functionality-settings). |
+
+:::note
+NVMe/TCP is supported only for VSP One SDS Block 01.16.00.4x.
+:::
 
 ### Network Requirements
 
@@ -6937,6 +7309,10 @@ The sample `multipath-machineconfig-sample.yaml` embeds a `multipath.conf` encod
 cat multipath-sample.conf | base64 -w0
 ```
 
+:::note
+HSPC does not support IQNs that include uppercase alphabetic characters.
+:::
+
 #### Native NVMe Multipath Settings
 
 For NVMe over FC or NVMe/TCP connections, enable native NVMe multipath on each node. For OpenShift:
@@ -6944,6 +7320,10 @@ For NVMe over FC or NVMe/TCP connections, enable native NVMe multipath on each n
 ```bash
 oc apply -f multipath-machineconfig-sample.yaml
 ```
+
+:::note
+Do not change a host NQN while the host is running. Perform the drain operation on the node first, then change the host NQN. After changing the host NQN, restart the host. When there are multiple nodes, make sure that no duplicate host NQN exists across nodes.
+:::
 
 Refer to the `csi-operator-hitachi` repository for the NVMe-specific MachineConfig sample.
 
@@ -6970,13 +7350,22 @@ Do not manually create or modify host groups that match this naming pattern. Do 
 
 ### Storage Pre-Installation — VSP One SDS Block
 
+:::note
+Do not add a WWN, IQN, or NQN of multiple hosts to the same Server resource. Only one Server resource can be associated with a single host.
+:::
+
 #### Multitenancy Functionality Settings
 
 If you use the VSP One SDS Block multitenancy functionality (Virtual Private Storage, VPS):
 
-1. Create a VPS for HSPC use.
-2. Create a storage system user with access scoped to that VPS.
-3. Specify the VPS ID in the Secret (`vpsID` parameter).
+:::note
+In an environment where one Kubernetes/OpenShift cluster uses one VSP One SDS Block, the following restrictions apply to Virtual Private Storage (VPS): Multiple VPSs cannot be used. VPS and resources that do not belong to the VPS cannot be used at the same time.
+:::
+
+1. Create a VPS for HSPC use. For the maximum number of compute nodes set for VPS, set a number greater than the number of nodes in the Kubernetes/OpenShift cluster. For the maximum number of sessions, set at least 20.
+2. Create a user group for HSPC. For the scope, set only the created VPS. For the role, set **VpsStorage**. Do not assign the users to a user group other than the user group you created in this step.
+3. Create a storage system user and assign it to the user group from step 2.
+4. Specify the VPS ID in the Secret (`vpsID` parameter).
 
 Refer to the VSP One SDS Block Storage Administrator Guide for detailed multitenancy setup procedures.
 
@@ -6996,8 +7385,14 @@ Chapter: 3 (Usage)
 A PVC requests storage from a StorageClass. HSPC dynamically provisions a new LDEV (or SDS Block volume) when the PVC is created.
 
 :::note
-To use an existing storage volume as a PVC, see [Volume Snapshots](/container-plugins/hspc/v3.16.1/quick-reference/snapshots.md) — specifically the Static Provisioning section.
-:::
+To use an existing storage volume as a PVC, see [Static Provisioning](/container-plugins/hspc/v3.16.1/quick-reference/appendix.md#static-provisioning).
+
+If you use both dynamic PVC provisioning and static provisioning in the same environment, verify that all static PVs have `claimRef` correctly set before creating new dynamic PVCs. PVs with `STATUS: Available` and no `claimRef` may be incorrectly bound to dynamically-created PVCs instead of creating a new volume. To check:
+
+1. Check for unbound static PVs: `kubectl get pv` — PVs with `STATUS: Available` are not yet associated.
+2. For each available PV, check if `claimRef` is set: `kubectl get pv <PV-name> -o yaml`
+3. If any PV has no `claimRef`, either re-create it with `claimRef` specified and then create the matching PVC, or delete it if it is no longer needed. If you proceed without fixing the `claimRef`, HSPC will not create a new dynamic PV and the PVC may bind to the incomplete static PV.
+   :::
 
 ### PVC YAML Reference (`pvc-sample.yaml`)
 
@@ -7370,7 +7765,34 @@ kubectl describe volumesnapshotcontent <VolumeSnapshotContentName>
 
 ## Snapshots for a Stretched PVC
 
-Creating a snapshot for a Stretched PVC follows the same procedure as a regular PVC snapshot. The snapshot captures both the primary and secondary volumes in the GAD pair.
+Creating a snapshot for a Stretched PVC requires a dedicated `VolumeSnapshotClass` that includes the `serialNumber` parameter to identify the storage system.
+
+```yaml title="volumesnapshotclass-stretched-sample.yaml"
+apiVersion: snapshot.storage.k8s.io/v1
+kind: VolumeSnapshotClass
+metadata:
+  name: snapshotclass-stretched-sample
+driver: hspc.csi.hitachi.com
+deletionPolicy: Delete
+parameters:
+  poolID: "1"                                                            # Same poolID as the StorageClass
+  serialNumber: "715035"                                                 # Required for Stretched PVC snapshots
+  csi.storage.k8s.io/snapshotter-secret-name: "secret-sample"
+  csi.storage.k8s.io/snapshotter-secret-namespace: "default"
+```
+
+Then create the `VolumeSnapshot` using this class, pointing to the Stretched PVC:
+
+```yaml title="volumesnapshot-stretched-sample.yaml"
+apiVersion: snapshot.storage.k8s.io/v1
+kind: VolumeSnapshot
+metadata:
+  name: snapshot-stretched-sample
+spec:
+  volumeSnapshotClassName: snapshotclass-stretched-sample
+  source:
+    persistentVolumeClaimName: <stretched-pvc-name>
+```
 
 See [Storage Classes — Stretched PVC](/container-plugins/hspc/v3.16.1/quick-reference/storage-classes.md#stretched-pvc-global-active-device) for Stretched PVC setup.
 
@@ -7591,6 +8013,10 @@ This allows building a high-availability cluster where the primary and secondary
 
 :::note
 Stretched PVC does not include management or monitoring of replication status or site failover. Use Storage Navigator or the GAD management tools for that.
+
+:::note
+Use **Element Manager for Block 20** to split or resync a GAD pair on VSP One Block storage systems.
+:::
 :::
 
 ### Requirements
@@ -7605,17 +8031,21 @@ Stretched PVC does not include management or monitoring of replication status or
 
 **Storage system requirements (both sites):**
 
-| Item                     | Requirement                                                                                                                              |
-| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| Supported models         | VSP One Block, VSP E series, VSP 5000 series, VSP F350/370/700/900, VSP G350/370/700/900                                                 |
-| License                  | Global Active Device (GAD) license — see the GAD User Guide                                                                              |
-| Virtual storage machines | Create one VSM per storage system. Primary and secondary VSMs must have the same serial number and model. Use VSMs exclusively for HSPC. |
-| Users and user groups    | Create a user group with access limited to the VSM's resource group.                                                                     |
-| Pool                     | Create from pool volumes within the VSM.                                                                                                 |
-| LDEV IDs                 | Assign unused LDEV IDs to the VSM; set virtual LDEV IDs to unassigned (65534).                                                           |
-| Host groups              | Assign unused host group IDs for each port (minimum: total hosts + 1 per port).                                                          |
-| Remote paths             | Create remote paths. Primary and secondary must use the same path group ID.                                                              |
-| Quorum disks             | Create quorum disks. Primary and secondary must use the same quorum disk ID.                                                             |
+| Item                     | Requirement                                                                                                                                                                      |
+| ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Supported models         | VSP One Block, VSP E series, VSP 5000 series, VSP F350/370/700/900, VSP G350/370/700/900                                                                                         |
+| License                  | Global Active Device (GAD) license — see the GAD User Guide                                                                                                                      |
+| Virtual storage machines | Create one VSM per storage system. Primary and secondary VSMs must have the same serial number and model. Use VSMs exclusively for HSPC. Do not use the VSMs for other purposes. |
+| Users and user groups    | Create a user group with access limited to the VSM's resource group.                                                                                                             |
+| Pool                     | Create from pool volumes within the VSM.                                                                                                                                         |
+| LDEV IDs                 | Assign unused LDEV IDs to the VSM; set virtual LDEV IDs to unassigned (65534).                                                                                                   |
+| Host groups              | Assign unused host group IDs for each port (minimum: total hosts + 1 per port).                                                                                                  |
+| Remote paths             | Create remote paths. Primary and secondary must use the same path group ID.                                                                                                      |
+| Quorum disks             | Create quorum disks. Primary and secondary must use the same quorum disk ID.                                                                                                     |
+
+:::note
+When using the same combination of storage systems from multiple Kubernetes/OpenShift clusters: use the same storage system users and virtual storage machines for each cluster, and verify that the primary-site and secondary-site storage system pairing is consistent across all clusters.
+:::
 
 **Compatibility with other features:**
 
@@ -7751,6 +8181,7 @@ When contacting Hitachi Vantara support, collect the following information:
 
 | Information                | How to Collect                                                 |
 | -------------------------- | -------------------------------------------------------------- |
+| Cluster information        | `kubectl cluster-info dump -A > dump.txt`                      |
 | Command execution logs     | The command you ran and its output                             |
 | `kubectl describe` output  | Run for the operation target resource                          |
 | CSI controller logs        | See [Collecting HSPC Logs](#collecting-hspc-logs)              |
@@ -7805,7 +8236,7 @@ Old logs may be rotated. To retrieve them:
 
 ### VSP Family and VSP One Block
 
-Use the storage system management software (Storage Navigator) to collect logs. Contact Hitachi Vantara support for guidance on specific log collection procedures.
+If you are using an SVP, collect the regular dump files. If you are not using an SVP, collect system dumps using the maintenance utility. For details, see the System Administrator Guide.
 
 ### VSP One SDS Block
 
@@ -7831,9 +8262,10 @@ kubectl get pv <pv-name> -o yaml
 
 ### Properties for VSP One SDS Block
 
-| Property   | Description                                   |
-| ---------- | --------------------------------------------- |
-| `volumeID` | ID of the volume created in VSP One SDS Block |
+| Property   | Description                                                                                                                                    |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| `volumeID` | ID of the volume created in VSP One SDS Block                                                                                                  |
+| `size`     | Original capacity used when creating the volume (note: this value does not update after expansion — use `kubectl get pv` for current CAPACITY) |
 
 ***
 
@@ -7841,7 +8273,11 @@ kubectl get pv <pv-name> -o yaml
 
 ### Forcibly Deleting a Pod
 
-If you use `kubectl delete pod --force`, Kubernetes marks the Pod as deleted but the volume unmount may not complete. Before re-creating the Pod with the same PVC, confirm the volume is unmounted on the node.
+If you use `kubectl delete pod --force`, Kubernetes marks the Pod as deleted but the volume unmount may not complete. The deleted Pod and the information on the PVC associated with the Pod might remain on the relevant node, and an unexpected error might occur.
+
+:::note
+To properly delete this information, you must **restart the relevant node** before using the node again.
+:::
 
 ### Creating and Deleting PVCs Simultaneously
 
@@ -7854,9 +8290,14 @@ Creating or deleting many PVCs at the same time can overload the storage system,
 
 Reduce the number of concurrent operations by lowering `--worker-threads` on the `csi-provisioner` container. See [Configuring HSPC](/container-plugins/hspc/v3.16.1/quick-reference/configuration.md#example-limiting-concurrent-worker-threads).
 
-### Host Group Exhaustion
+### Host Group Exhaustion / Error 0x00001023
 
-If HSPC cannot create a host group (the storage has reached its host group limit), provisioning operations will fail. Check the host group count on the storage system and free up unused host groups if necessary.
+If HSPC encounters error `0x00001023`, the storage has reached its host group limit or a host group name does not follow the HSPC naming format (`spc-<wwn1>-<wwn2>-<wwn3>`). To resolve:
+
+1. Delete HSPC. See [Uninstalling HSPC](/container-plugins/hspc/v3.16.1/quick-reference/uninstalling.md).
+2. Delete the host group specified in the error message.
+3. Search for host groups that have WWNs for each host, and delete them or rename them to the `spc-<wwn1>-<wwn2>-<wwn3>` naming format.
+4. Re-create HSPC. See [Installing HSPC](/container-plugins/hspc/v3.16.1/quick-reference/installation.md).
 
 ### Timeout Errors When Creating or Deleting Pods
 
@@ -7865,14 +8306,66 @@ If Pod creation or deletion times out:
 1. Check CSI node logs for errors.
 2. Verify the node has connectivity to the storage system on the configured ports.
 3. Confirm multipath is configured correctly on the node.
+4. If the timeout continues, re-create the HSPC instance. See [Installing HSPC](/container-plugins/hspc/v3.16.1/quick-reference/installation.md).
+5. If the timeout still persists, restart the node to which the Pod is assigned.
+
+:::caution
+Restarting a node might affect other environments. Check the scope of the impact and follow the Kubernetes/OpenShift documentation procedures carefully.
+:::
 
 ### Unable to Schedule or Create a Pod
 
-If a Pod remains in Pending or ContainerCreating state:
+If a Pod remains in Pending or ContainerCreating state, the issue may be that multipath services or modules are not configured correctly, or they are not running on the scheduled node.
 
-1. Run `kubectl describe pod <pod-name>` and review the Events section.
-2. Check that the PVC is in `Bound` state.
-3. Verify the node has the required storage interface (FC HBA, iSCSI initiator, or NVMe adapter) configured.
+1. Verify the multipath service status:
+
+```bash
+systemctl status multipathd
+```
+
+If the daemon is not running, continue to the next step.
+
+2. Enable and start the multipath service:
+
+```bash
+systemctl enable --now multipathd
+```
+
+3. Load the multipath kernel module:
+
+```bash
+modprobe dm-multipath
+```
+
+4. Verify the multipath devices detected:
+
+```bash
+multipath -ll
+```
+
+Verify that the storage devices used by the PersistentVolume are listed.
+
+:::note
+You must reboot the node after configuring the multipath settings.
+:::
+
+If the issue persists, also check: `kubectl describe pod <pod-name>` and review the Events section, confirm the PVC is in `Bound` state, and verify the node has the required storage interface (FC HBA, iSCSI initiator, or NVMe adapter) configured.
+
+### Stretched PVC — Host Failure
+
+If a host fails, the status of the Pod run by the failed host becomes `Terminating` and the Pod enters an abnormal state. To resume the Pod on a healthy host:
+
+1. Forcibly delete the Pod:
+
+```bash
+kubectl delete pod <Pod-name> --grace-period=0 --force
+```
+
+2. Delete the `VolumeAttachment` related to the Stretched PVC the Pod was using:
+
+```bash
+kubectl delete volumeattachment <VolumeAttachment-name>
+```
 
 
 
@@ -7889,25 +8382,19 @@ Chapters: 4, 5, 6
 
 :::warning Before upgrading
 
-- Remove any **alpha or beta VolumeSnapshotClass and VolumeSnapshot** resources before upgrading.
+- Remove any **alpha VolumeSnapshotClass and VolumeSnapshot** resources before upgrading.
 - If your OpenShift or Kubernetes version is older than the minimum required for the new HSPC version, upgrade the orchestrator first.
-- Back up your HSPC instance configuration (`hspc_v1_hspc.yaml`) before upgrading — settings may be needed for the new version.
+- Back up your HSPC instance configuration (`hspc_v1_hspc.yaml`) before upgrading — settings may be needed for the new version. If you do not have the file, run `kubectl get hspc -A -o yaml` to obtain the configured settings.
 
 :::
 
 ### Upgrade on OpenShift
 
-HSPC upgrades on OpenShift are managed through the Operator lifecycle.
+HSPC upgrades on OpenShift require a full delete-and-reinstall via the web console.
 
-1. Access the **OpenShift web console → Operators → Installed Operators**.
-2. Find **Hitachi Storage Plug-in for Containers** and approve any pending upgrade Install Plan.
-3. After the Operator upgrades, confirm the instance status:
-
-```bash
-oc get hspc -n <hspc-namespace>
-# NAME    READY    AGE
-# hspc    true     <age>
-```
+1. Delete the HSPC instance from the **Storage Plug-in for Containers** tab in Operator Details.
+2. Uninstall the **Storage Plug-in for Containers** Operator from the OpenShift web console.
+3. Install the new version of Storage Plug-in for Containers. See [Installing HSPC](/container-plugins/hspc/v3.16.1/quick-reference/installation.md).
 
 ### Upgrade on Kubernetes
 
@@ -7997,6 +8484,18 @@ kubectl delete -f hspc_v1_hspc.yaml
 
 ```bash
 kubectl delete -f hspc-operator.yaml
+```
+
+5. Delete the HSPC namespace:
+
+```bash
+kubectl delete -f hspc-operator-namespace.yaml
+```
+
+6. If you created a Secret to pull the HSPC image, delete it:
+
+```bash
+kubectl delete secret <image-pull-secret-name> -n <hspc-namespace>
 ```
 
 

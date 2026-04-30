@@ -220,6 +220,7 @@ url: /container-plugins/hspc/v3.18.0/index.md
 - [Device Mapper Multipath Settings](/container-plugins/hspc/v3.18.0/quick-reference/overview.md#device-mapper-multipath-settings)
 - [Storage Pre-installation for VSP Family and VSP One Block](/container-plugins/hspc/v3.18.0/quick-reference/overview.md#storage-pre-installation-for-vsp-family-and-vsp-one-block)
 - [Host Group and iSCSI Target Naming Rules](/container-plugins/hspc/v3.18.0/quick-reference/overview.md#host-group-and-iscsi-target-naming-rules)
+- [Multitenancy Settings (VSP One SDS Block)](/container-plugins/hspc/v3.18.0/quick-reference/overview.md#multitenancy)
 
 ### [Installing HSPC](/container-plugins/hspc/v3.18.0/quick-reference/installation.md)
 
@@ -255,6 +256,8 @@ url: /container-plugins/hspc/v3.18.0/index.md
 - [Snapshots](/container-plugins/hspc/v3.18.0/quick-reference/storage-classes.md#snapshots)
 - [Cloning a PVC](/container-plugins/hspc/v3.18.0/quick-reference/storage-classes.md#cloning-a-pvc)
 - [Resource Partitioning](/container-plugins/hspc/v3.18.0/quick-reference/storage-classes.md#resource-partitioning)
+- [Secret Settings for Resource Partitioning](/container-plugins/hspc/v3.18.0/quick-reference/storage-classes.md#secret-settings-for-resource-partitioning)
+- [StorageClass Settings for Resource Partitioning](/container-plugins/hspc/v3.18.0/quick-reference/storage-classes.md#storageclass-settings-for-resource-partitioning)
 - [Stretched PVC](/container-plugins/hspc/v3.18.0/quick-reference/storage-classes.md#stretched-pvc)
 - [Requirements](/container-plugins/hspc/v3.18.0/quick-reference/storage-classes.md#requirements-1)
 - [Creating a Stretched PVC](/container-plugins/hspc/v3.18.0/quick-reference/storage-classes.md#creating-a-stretched-pvc)
@@ -306,10 +309,12 @@ url: /container-plugins/hspc/v3.18.0/index.md
 - [Uninstalling HSPC](/container-plugins/hspc/v3.18.0/quick-reference/uninstalling.md#uninstalling-hspc)
 - [Uninstall on OpenShift](/container-plugins/hspc/v3.18.0/quick-reference/uninstalling.md#uninstall-on-openshift)
 - [Uninstall on Kubernetes](/container-plugins/hspc/v3.18.0/quick-reference/uninstalling.md#uninstall-on-kubernetes)
-- [Delete all Pods and PVCs managed by HSPC](/container-plugins/hspc/v3.18.0/quick-reference/uninstalling.md#delete-all-pods-and-pvcs-managed-by-hspc)
+- [Delete all Pods using HSPC volumes](/container-plugins/hspc/v3.18.0/quick-reference/uninstalling.md#delete-all-pods-using-hspc-volumes-1)
+- [Delete HSPC-created resources](/container-plugins/hspc/v3.18.0/quick-reference/uninstalling.md#delete-hspc-created-resources)
 - [Delete the HSPC instance](/container-plugins/hspc/v3.18.0/quick-reference/uninstalling.md#delete-the-hspc-instance-2)
 - [Delete the Operator](/container-plugins/hspc/v3.18.0/quick-reference/uninstalling.md#delete-the-operator-1)
 - [Delete the namespace](/container-plugins/hspc/v3.18.0/quick-reference/uninstalling.md#delete-the-namespace)
+- [Delete the image pull Secret (if applicable)](/container-plugins/hspc/v3.18.0/quick-reference/uninstalling.md#delete-the-image-pull-secret-if-applicable)
 
 ### [Telemetry](/container-plugins/hspc/v3.18.0/quick-reference/telemetry.md)
 
@@ -411,6 +416,7 @@ url: /container-plugins/hspc/v3.18.0/quick-reference/index.md
 - [Device Mapper Multipath Settings](/container-plugins/hspc/v3.18.0/quick-reference/overview.md#device-mapper-multipath-settings)
 - [Storage Pre-installation for VSP Family and VSP One Block](/container-plugins/hspc/v3.18.0/quick-reference/overview.md#storage-pre-installation-for-vsp-family-and-vsp-one-block)
 - [Host Group and iSCSI Target Naming Rules](/container-plugins/hspc/v3.18.0/quick-reference/overview.md#host-group-and-iscsi-target-naming-rules)
+- [Multitenancy Settings (VSP One SDS Block)](/container-plugins/hspc/v3.18.0/quick-reference/overview.md#multitenancy)
 
 ### [Installing HSPC](/container-plugins/hspc/v3.18.0/quick-reference/installation.md)
 
@@ -446,6 +452,8 @@ url: /container-plugins/hspc/v3.18.0/quick-reference/index.md
 - [Snapshots](/container-plugins/hspc/v3.18.0/quick-reference/storage-classes.md#snapshots)
 - [Cloning a PVC](/container-plugins/hspc/v3.18.0/quick-reference/storage-classes.md#cloning-a-pvc)
 - [Resource Partitioning](/container-plugins/hspc/v3.18.0/quick-reference/storage-classes.md#resource-partitioning)
+- [Secret Settings for Resource Partitioning](/container-plugins/hspc/v3.18.0/quick-reference/storage-classes.md#secret-settings-for-resource-partitioning)
+- [StorageClass Settings for Resource Partitioning](/container-plugins/hspc/v3.18.0/quick-reference/storage-classes.md#storageclass-settings-for-resource-partitioning)
 - [Stretched PVC](/container-plugins/hspc/v3.18.0/quick-reference/storage-classes.md#stretched-pvc)
 - [Requirements](/container-plugins/hspc/v3.18.0/quick-reference/storage-classes.md#requirements-1)
 - [Creating a Stretched PVC](/container-plugins/hspc/v3.18.0/quick-reference/storage-classes.md#creating-a-stretched-pvc)
@@ -497,10 +505,12 @@ url: /container-plugins/hspc/v3.18.0/quick-reference/index.md
 - [Uninstalling HSPC](/container-plugins/hspc/v3.18.0/quick-reference/uninstalling.md#uninstalling-hspc)
 - [Uninstall on OpenShift](/container-plugins/hspc/v3.18.0/quick-reference/uninstalling.md#uninstall-on-openshift)
 - [Uninstall on Kubernetes](/container-plugins/hspc/v3.18.0/quick-reference/uninstalling.md#uninstall-on-kubernetes)
-- [Delete all Pods and PVCs managed by HSPC](/container-plugins/hspc/v3.18.0/quick-reference/uninstalling.md#delete-all-pods-and-pvcs-managed-by-hspc)
+- [Delete all Pods using HSPC volumes](/container-plugins/hspc/v3.18.0/quick-reference/uninstalling.md#delete-all-pods-using-hspc-volumes-1)
+- [Delete HSPC-created resources](/container-plugins/hspc/v3.18.0/quick-reference/uninstalling.md#delete-hspc-created-resources)
 - [Delete the HSPC instance](/container-plugins/hspc/v3.18.0/quick-reference/uninstalling.md#delete-the-hspc-instance-2)
 - [Delete the Operator](/container-plugins/hspc/v3.18.0/quick-reference/uninstalling.md#delete-the-operator-1)
 - [Delete the namespace](/container-plugins/hspc/v3.18.0/quick-reference/uninstalling.md#delete-the-namespace)
+- [Delete the image pull Secret (if applicable)](/container-plugins/hspc/v3.18.0/quick-reference/uninstalling.md#delete-the-image-pull-secret-if-applicable)
 
 ### [Telemetry](/container-plugins/hspc/v3.18.0/quick-reference/telemetry.md)
 
@@ -589,6 +599,8 @@ The `csi-controller` runs in the Control Plane and communicates with the storage
 | Rancher Kubernetes Engine 2 (RKE2)      | 1.32, 1.33, 1.34   | References to "Kubernetes" in this guide apply to RKE2. |
 | Amazon Elastic Kubernetes Service (EKS) | 1.32, 1.33, 1.34   | References to "Kubernetes" in this guide apply to EKS.  |
 
+See the Product Compatibility Guide at [https://compatibility.hitachivantara.com/products/hspc](https://compatibility.hitachivantara.com/products/hspc) and [https://compatibility.hitachivantara.com/products/sdsb-hspc](https://compatibility.hitachivantara.com/products/sdsb-hspc) for supported products and versions.
+
 ## Server Requirements
 
 | Component        | Requirement                                                                      |
@@ -634,14 +646,14 @@ Before configuring your environment, review the [Hitachi CSI Best Practices Guid
 
 ### Server Pre-installation
 
-| Component     | Task                                                                                                    |
-| ------------- | ------------------------------------------------------------------------------------------------------- |
-| Hypervisor    | Set up the hypervisor if using virtual machines. Tested with VMware vSphere 7.0/8.0.                    |
-| Fibre Channel | Verify HBA is installed on nodes with FC connections.                                                   |
-| iSCSI         | Verify iSCSI initiator software is installed. HSPC does **not** support IQNs with uppercase characters. |
-| NVMe over FC  | Supported on Ubuntu 20.04/22.04/24.04, RHEL 9, and RHEL CoreOS. Install `nvme-cli`.                     |
-| NVMe/TCP      | Supported on RHEL 9 and RHEL CoreOS. Install `nvme-cli` and load `nvme-tcp` module if needed.           |
-| Multipath     | Use **Device Mapper Multipath** for FC/iSCSI. Use **Native NVMe Multipath** for NVMe over FC/TCP.       |
+| Component     | Task                                                                                                                                                                                                                                                                                                                                                                                        |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Hypervisor    | Set up the hypervisor if using virtual machines. Tested with VMware vSphere 7.0/8.0.                                                                                                                                                                                                                                                                                                        |
+| Fibre Channel | Verify HBA is installed on nodes with FC connections.                                                                                                                                                                                                                                                                                                                                       |
+| iSCSI         | Verify iSCSI initiator software is installed. If not installed, see [Creating an iSCSI initiator (RHEL 9)](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/managing_storage_devices/configuring-an-iscsi-initiator_managing-storage-devices#creating-an-iscsi-initiator_configuring-an-iscsi-initiator). HSPC does **not** support IQNs with uppercase characters. |
+| NVMe over FC  | Supported on Ubuntu 20.04/22.04/24.04, RHEL 9, and RHEL CoreOS. Install `nvme-cli`.                                                                                                                                                                                                                                                                                                         |
+| NVMe/TCP      | Supported on RHEL 9 and RHEL CoreOS. Install `nvme-cli` and load `nvme-tcp` module if needed.                                                                                                                                                                                                                                                                                               |
+| Multipath     | Use **Device Mapper Multipath** for FC/iSCSI. Use **Native NVMe Multipath** for NVMe over FC/TCP.                                                                                                                                                                                                                                                                                           |
 
 :::note
 Do **not** change a host NQN while HSPC is running. Drain the node, change the NQN, then restart HSPC. Each node must have a **unique NQN**.
@@ -707,14 +719,14 @@ MachineConfig applies to compute nodes only. After creation, all compute nodes r
 
 ### Storage Pre-installation for VSP Family and VSP One Block
 
-| Component        | Task                                                                                                                              |
-| ---------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| Program products | Enable DP, HTI, and HTIA (VSP One Block) licenses                                                                                 |
-| Pool             | Create a DP pool. Dynamic Tiering is **not** supported. VSP One Block requires a pool configured with flash media (SSD).          |
-| FC connection    | Use a Fibre Channel switch. Configure ports: Connection Type=P-to-P, Fabric=ON, Security=Enabled.                                 |
-| iSCSI connection | Enable port security via Storage Navigator.                                                                                       |
-| NVMe over FC     | Create an NVM subsystem. Enable namespace security. Set FC port to NVMe mode.                                                     |
-| NVMe/TCP         | Create a dedicated NVM subsystem. Configure NVM subsystem ports. Supported on VSP One Block High End and VSP One Block 20 series. |
+| Component        | Task                                                                                                                                                                                                                                                                                |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Program products | Enable DP, HTI, and HTIA (VSP One Block) licenses                                                                                                                                                                                                                                   |
+| Pool             | Create a DP pool. Dynamic Tiering is **not** supported. VSP One Block requires a pool configured with flash media (SSD).                                                                                                                                                            |
+| FC connection    | Use a Fibre Channel switch. Configure ports: Connection Type=P-to-P, Fabric=ON, Security=Enabled.                                                                                                                                                                                   |
+| iSCSI connection | Enable port security via Storage Navigator.                                                                                                                                                                                                                                         |
+| NVMe over FC     | Create an NVM subsystem for the storage system. Enable namespace security and specify Linux as the host mode. Set the FC port to NVMe mode. **Disable LUN security on the Fibre Channel port.** Set an NVM subsystem port. The NVM subsystem must be dedicated exclusively to HSPC. |
+| NVMe/TCP         | Create a dedicated NVM subsystem. Configure NVM subsystem ports. Supported on VSP One Block High End and VSP One Block 20 series.                                                                                                                                                   |
 
 ### Host Group and iSCSI Target Naming Rules \{#host-group-and-iscsi-target-naming-rules}
 
@@ -732,6 +744,15 @@ spc-<wwn1>-<wwn2>-<wwn3>
 
 - `<wwn1>`, `<wwn2>`, `<wwn3>` are the sorted WWNs of the host.
 - If a host has more than 3 WWNs, only the 3 lowest names are used.
+- If a host has only one or two WWNs, the name is `spc-<wwn1>` or `spc-<wwn1>-<wwn2>` respectively.
+
+:::note
+As a best practice, do not create host groups manually. However, if you need to create one manually, ensure that you follow the naming rules above.
+:::
+
+:::note
+Storage Plug-in for Containers will overwrite host mode options even if existing iSCSI targets have other host mode options.
+:::
 
 **iSCSI target naming rule:**
 
@@ -741,6 +762,23 @@ spc-<any-string>
 
 - Auto-created as `spc-<hashed-IQN>`.
 - Existing targets must be renamed to follow the `spc-` prefix rule.
+
+## Multitenancy Settings (VSP One SDS Block) \{#multitenancy}
+
+If you use the multitenancy functionality with VSP One SDS Block, configure the following:
+
+:::note
+In an environment where one Kubernetes/OpenShift cluster uses one VSP One SDS Block, the following restrictions apply to Virtual Private Storage (VPS):
+
+- Multiple VPSs cannot be used.
+- VPS and resources that do not belong to the VPS cannot be used at the same time.
+  :::
+
+| Component  | Task                                                                                                                                                                                      |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| VPS        | Create a VPS. Set the maximum number of compute nodes to a value greater than the number of nodes in the Kubernetes/OpenShift cluster. Set the maximum number of sessions to at least 20. |
+| User group | Create a user group that belongs to the VPS. Set the scope to only the created VPS. Set the role to **VpsStorage**.                                                                       |
+| User       | Create users and assign them to the user group you created. Do not assign users to any other user group.                                                                                  |
 
 
 
@@ -768,7 +806,7 @@ Select the following settings in Operator Subscription:
 - **Installation mode:** Select "A specific namespace on the cluster" and specify any namespace.
 - **Update approval:** Select "Manual" and approve the Install Plan.
 :::
-For disconnected environments, mirror the `certified-operators` catalog before installation. See [OpenShift mirroring documentation](https://docs.openshift.com/container-platform/latest/disconnected/mirroring/installing-mirroring-installation-images.html).
+For disconnected environments, mirror the `certified-operators` catalog before installation. See [OpenShift mirroring documentation](https://docs.openshift.com/container-platform/latest/disconnected/mirroring/installing-mirroring-installation-images.html). For example, for OpenShift Container Platform version 4.10, the index image of the certified-operators catalog is `registry.redhat.io/redhat/certified-operator-index:v4.10`. For details, see [OLM RH Catalogs](https://docs.openshift.com/container-platform/latest/operators/understanding/olm-rh-catalogs.html).
 ### Confirm the Operator status is Succeeded
 Verify the Operator Pod is **Running**.
 ### Create the HSPC instance
@@ -802,6 +840,9 @@ kubectl get namespaces | grep hspc-operator-system
 ```
 hspc-operator-system   Active   53s
 ```
+:::note
+Verify that the namespace is used in all plugin configurations and operations.
+:::
 ### Deploy the Operator
 ```bash
 kubectl create -f hspc-operator.yaml
@@ -926,6 +967,8 @@ data:
   user: VXNlcjAx                    # (3) base64-encoded username
   password: UGFzc3dvcmQwMQ==        # (4) base64-encoded password
   hostModeOptions: ODgsODENCg==     # (5) base64-encoded host mode options
+  resourceGroupID:                  # (6) Optional: resource group ID
+  virtualStorageMachineSerialNumber: # (7) Optional: VSM serial number
 ```
 
 | Field | Description                                                                                                                                                   |
@@ -935,10 +978,14 @@ data:
 | (3)   | Base64-encoded username: `echo -n "User01" \| base64`                                                                                                         |
 | (4)   | Base64-encoded password: `echo -n "Password01" \| base64`                                                                                                     |
 | (5)   | Base64-encoded host mode options (e.g., `echo -n "88,81" \| base64`). Default options: 2, 22, 25, 68, 91.                                                     |
+| (6)   | Optional: The resource group ID.                                                                                                                              |
+| (7)   | Optional: The serial number of the virtual storage machine (VSM).                                                                                             |
 
 :::note
-To add custom host mode options, specify them in `hostModeOptions`. You must delete and recreate the Pod to apply them.
-:::
+
+- By default, the host mode options are set to 2, 22, 25, 68, and 91. If you need to add additional host mode options, specify them in the `hostModeOptions` parameter. You must delete and recreate the Pod to apply them.
+- You cannot use VSM for the `resourceGroupID`.
+  :::
 
 
 
@@ -997,18 +1044,18 @@ parameters:
   csi.storage.k8s.io/controller-expand-secret-name: "secret-sample"
   csi.storage.k8s.io/controller-expand-secret-namespace: "default"
 ```
-| Field | Description                                                                                                                                                                                |
-| ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| (1)   | StorageClass name                                                                                                                                                                          |
-| (2)   | Storage serial number                                                                                                                                                                      |
-| (3)   | HDP pool ID                                                                                                                                                                                |
-| (4)   | Port ID (comma-separated for multipath). Not required for NVMe over FC or NVMe/TCP.                                                                                                        |
-| (5)   | Connection type: `fc`, `iscsi`, `nvme-fc`, or `nvme-tcp`. Default: `fc`. For NVMe, also add `nvmSubsystemID`. NVMe/TCP is supported on VSP One Block High End and VSP One Block 20 series. |
-| (6)   | Adaptive data reduction: `Compression`, `CompressionDeduplication`, or `Disabled`. Default: `Disabled`. VSP One B20 series does not support `Disabled`.                                    |
-| (7)   | Execution mode for adaptive data reduction: `Inline` or `PostProcess`. Only when (6) is set.                                                                                               |
-| (8)   | Filesystem type: `ext4` or `xfs`. Default: `ext4`.                                                                                                                                         |
-| (9)   | Secret name                                                                                                                                                                                |
-| (10)  | Secret namespace                                                                                                                                                                           |
+| Field | Description                                                                                                                                                                                                                                                                                                                                                                                       |
+| ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| (1)   | StorageClass name                                                                                                                                                                                                                                                                                                                                                                                 |
+| (2)   | Storage serial number                                                                                                                                                                                                                                                                                                                                                                             |
+| (3)   | HDP pool ID                                                                                                                                                                                                                                                                                                                                                                                       |
+| (4)   | Port ID (comma-separated for multipath). Not required for NVMe over FC or NVMe/TCP.                                                                                                                                                                                                                                                                                                               |
+| (5)   | Connection type: `fc`, `iscsi`, `nvme-fc`, or `nvme-tcp`. Default: `fc`. For NVMe, also add `nvmSubsystemID`. NVMe/TCP is supported on VSP One Block High End and VSP One Block 20 series.                                                                                                                                                                                                        |
+| (6)   | Adaptive data reduction: `Compression`, `CompressionDeduplication`, or `Disabled`. Default: `Disabled`. For VSP One B20 series, `Disabled` is not supported — the default is `CompressionDeduplication`. If the LDEV was created with Storage Plug-in for Containers, do not change the parameters related to adaptive data reduction.                                                            |
+| (7)   | Execution mode for adaptive data reduction: `Inline` or `PostProcess`. You can specify this parameter when (6) is `Compression` or `CompressionDeduplication`. If `storageEfficiencyMode` is not specified, adaptive data reduction runs in the default execution mode, which depends on the storage system model. See the Provisioning Guide for Open Systems or Provisioning Guide for details. |
+| (8)   | Filesystem type: `ext4` or `xfs`. Default: `ext4`.                                                                                                                                                                                                                                                                                                                                                |
+| (9)   | Secret name                                                                                                                                                                                                                                                                                                                                                                                       |
+| (10)  | Secret namespace                                                                                                                                                                                                                                                                                                                                                                                  |
 
 
 **VSP One SDS Block**
@@ -1040,13 +1087,13 @@ parameters:
   csi.storage.k8s.io/controller-expand-secret-name: "secret-sample"
   csi.storage.k8s.io/controller-expand-secret-namespace: "default"
 ```
-| Field | Description                                              |
-| ----- | -------------------------------------------------------- |
-| (1)   | StorageClass name                                        |
-| (2)   | Storage type for SDS Block. Must be `vsp-one-sds-block`. |
-| (3)   | Connection type: `fc`, `iscsi`, or `nvme-tcp`.           |
-| (4)   | Adaptive data reduction: `Compression` or `Disabled`.    |
-| (5)   | Filesystem type: `ext4` or `xfs`. Default: `ext4`.       |
+| Field | Description                                                                                                                                                                                                                                      |
+| ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| (1)   | StorageClass name                                                                                                                                                                                                                                |
+| (2)   | Storage type for SDS Block. Must be `vsp-one-sds-block`.                                                                                                                                                                                         |
+| (3)   | Connection type: `fc`, `iscsi`, or `nvme-tcp`.                                                                                                                                                                                                   |
+| (4)   | Adaptive data reduction: `Compression` or `Disabled`. Default: `Disabled`. If you are using the multitenancy functionality, you cannot set this parameter — for multitenancy, the data reduction function settings comply with the VPS settings. |
+| (5)   | Filesystem type: `ext4` or `xfs`. Default: `ext4`.                                                                                                                                                                                               |
 
 
 ## Static Provisioning \{#static-provisioning}
@@ -1063,8 +1110,30 @@ On **OpenShift**, the console plugin offers a **Create Static PV** wizard that a
 - The `claimRef` must be correctly specified to bind the PV to a PVC.
 
 :::note
+Static provisioning is not supported for stretched PVCs.
+:::
+
+:::note
 If you are mixing dynamic and static provisioning, verify there are no PVs with `STATUS: Available` that have no `claimRef` set before creating new PVCs. Unbound PVs without `claimRef` may be incorrectly associated with dynamically-created PVCs.
 :::
+
+#### Requirements for VSP Family and VSP One Block
+
+- The LDEV has the DP attribute. For VSP family, the LDEV does not have the DRS attribute. For VSP One Block, the LDEV has the DRS attribute. (The DRS attribute indicates the data reduction shared volume.)
+- The nickname format is `spc-<10-digit-hexadecimal-number>`. The hex value must be unique for each LDEV. You can generate a unique string with: `echo spc-$(cat /dev/urandom | tr -dc a-f0-9 | head -c 10)`
+- The LDEV is not mapped to a port.
+- No pairs are formed.
+
+If the LDEV is assigned to a specific resource group, also see [Resource Partitioning](#resource-partitioning) for storage system requirements.
+
+#### Requirements for VSP One SDS Block
+
+- `naaId` can be obtained as volume information. Volumes created for VSP One SDS Block v1.11 or earlier do not support `naaId` and are not supported.
+- `volumeType` is `Normal`.
+- `name` and `nickname` have the same value, in the format `spc-<10-digit-hexadecimal-number>`. You can generate a unique string with: `echo spc-$(cat /dev/urandom | tr -dc a-f0-9 | head -c 10)`
+- The volume is not connected to a computer node.
+
+If the volume is assigned to a specific VPS, also see the multitenancy configuration in [Overview and Prerequisites](/container-plugins/hspc/v3.18.0/quick-reference/overview.md#multitenancy).
 
 ### Creating Secret and StorageClass for Static Provisioning
 
@@ -1132,6 +1201,17 @@ spec:
 
 ## Snapshots \{#snapshots}
 
+:::note
+
+- If the volume has been expanded, verify that the operation has successfully completed before creating the volume snapshot. See [Expanding Volumes](/container-plugins/hspc/v3.18.0/quick-reference/expanding-volumes.md) for details.
+- Flush the data before creating a snapshot for data consistency. For example, temporarily remove the Pod.
+- This feature is not supported on VSP One SDS Block.
+  :::
+
+:::note
+If your environment is Kubernetes, install Snapshot CRDs and Snapshot Controller per cluster. See [https://github.com/kubernetes-csi/external-snapshotter](https://github.com/kubernetes-csi/external-snapshotter). For Snapshot CRDs, use v1. If Snapshot Alpha or Beta CRDs are present in your environment, remove them before installing Snapshot v1 CRDs.
+:::
+
 Create a VolumeSnapshotClass before using snapshots:
 
 :::tip
@@ -1152,9 +1232,12 @@ parameters:
   csi.storage.k8s.io/snapshotter-secret-namespace: "default"
 ```
 
-:::note
-`retentionPeriod` is optional. Specify a value between 1 and 12,288 hours to create immutable snapshots. Immutable snapshots are supported only on VSP One B20 series storage systems.
-:::
+| Field                                             | Description                                                                                                                                                                                                                                                                                                                                                                                       |
+| ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `poolID`                                          | Same `poolID` as the StorageClass.                                                                                                                                                                                                                                                                                                                                                                |
+| `retentionPeriod`                                 | Optional. Specify a value between 1 and 12,288 hours to create immutable snapshots. Once configured, the snapshot data remains protected from updates until the retention period expires — it cannot be deleted or cloned during this time. After the period ends, the retention setting is automatically disabled. Immutable snapshots are supported only on VSP One B20 series storage systems. |
+| `csi.storage.k8s.io/snapshotter-secret-name`      | Same Secret name as the StorageClass.                                                                                                                                                                                                                                                                                                                                                             |
+| `csi.storage.k8s.io/snapshotter-secret-namespace` | Same Secret namespace as the StorageClass.                                                                                                                                                                                                                                                                                                                                                        |
 
 Create a snapshot of a PVC:
 
@@ -1191,6 +1274,13 @@ spec:
 
 ## Cloning a PVC \{#cloning-a-pvc}
 
+:::note
+
+- If the volume is expanded, confirm that expansion has completed before executing this feature. See [Expanding Volumes](/container-plugins/hspc/v3.18.0/quick-reference/expanding-volumes.md) for details.
+- Flush the data before cloning for data consistency. For example, temporarily remove the Pod.
+- This feature is not supported on VSP One SDS Block.
+  :::
+
 Clone an existing PVC:
 
 :::note
@@ -1216,17 +1306,17 @@ spec:
 
 ## Resource Partitioning
 
-Resource partitioning enables multi-tenant isolation using Hitachi Virtual Storage Machine (VSM) resource groups. The correct approach is to assign each Kubernetes cluster to exactly one Resource Group.
+Resource partitioning enables you to allocate and isolate storage system resources for each Kubernetes cluster using Hitachi Virtual Storage Machine (VSM) resource groups. HSPC supports the use of multiple resource groups, multiple VSMs, and meta-resource groups within a single cluster. Each resource group is identified by a unique `resourceGroupID`, which is specified in the Secret.
 
 :::note
-If you use resource partitioning, configure it **before** creating any StorageClasses or PVCs.
+Resource partitioning is not supported for VSP One SDS Block. If you use resource partitioning, configure it **before** creating any StorageClasses or PVCs.
 :::
 
-**Supported — one Resource Group per Kubernetes cluster:**
+**Example: multiple clusters sharing resource groups across storage systems:**
 
 ![Resource partitioning multi-cluster overview — four Kubernetes clusters mapped across two resource groups: production #1 and #2 use Resource Group #1 (blue), test #1 and #2 use Resource Group #2 (pink), accessed via Shared Ports](/images/hspc/resource-partitioning-overview.svg)
 
-Each Kubernetes cluster maps to exactly one Resource Group. Production clusters use Resource Group #1; test clusters use Resource Group #2. Storage ports are shared but LDEV IDs, Host Group IDs, and Pools are isolated per resource group.
+Storage ports are shared but LDEV IDs, Host Group IDs, and Pools are isolated per resource group.
 
 **Unsupported (Example 1) — mixing a resource group StorageClass with meta\_resource in the same cluster:**
 
@@ -1239,6 +1329,36 @@ You cannot use both a resource-group-specific Secret/StorageClass and a meta\_re
 ![Resource partitioning unsupported example 2 — single Kubernetes cluster with StorageClasses for both Resource Group #1 and Resource Group #2 from the same storage system](/images/hspc/resource-partitioning-unsupported2.svg)
 
 You cannot map multiple resource groups from the same storage system to the same Kubernetes cluster.
+
+### Secret Settings for Resource Partitioning
+
+Specify the resource group ID and optionally the virtual storage machine (VSM) serial number in the Secret:
+
+```yaml title="secret-resource-partitioned.yaml"
+apiVersion: v1
+kind: Secret
+metadata:
+  name: secret-sample
+type: Opaque
+data:
+  url: <base64-encoded-url>
+  user: <base64-encoded-user>
+  password: <base64-encoded-password>
+  hostModeOptions: <base64-encoded-options>    # (5) Optional
+  resourceGroupID: <base64-encoded-rg-id>      # (6) Optional
+  virtualStorageMachineSerialNumber: <base64-encoded-vsm-serial>  # (7) Optional
+```
+
+| Field                               | Description                                                           |
+| ----------------------------------- | --------------------------------------------------------------------- |
+| `resourceGroupID`                   | (6) Optional. The resource group ID of the storage system.            |
+| `virtualStorageMachineSerialNumber` | (7) Optional. The serial number of the virtual storage machine (VSM). |
+
+:::note
+You cannot use VSM for the `resourceGroupID`.
+:::
+
+### StorageClass Settings for Resource Partitioning
 
 Add the `resourceGroup` parameter to the StorageClass:
 
@@ -1360,45 +1480,38 @@ After creating a Stretched PVC using a secret that specifies primary and seconda
 
 Use the `GadPairAction` custom resource to split or resync a GAD pair. This is useful for maintenance, failover testing, or disaster recovery scenarios.
 
-```yaml title="gadpairaction-split.yaml"
+```yaml title="gadpairaction-sample.yaml"
 apiVersion: csi.hitachi.com/v1
 kind: GadPairAction
 metadata:
-  name: gadpairaction-split
+  name: gadpairaction-sample
   namespace: <namespace>
 spec:
-  action: split
-  storageClassName: sc-stretched
-  persistentVolumeClaimName: pvc-stretched-sample
+  action: split                          # (1)
+  remoteMirrorCopyPairId: <copy-pair-id> # (2) Optional
+  storageClassName: sc-stretched         # (3)
+  source:
+    persistentVolumeClaimName: pvc-stretched-sample  # (4) Optional
   retryPolicy:
-    maxRetries: 3
-```
-
-```yaml title="gadpairaction-resync.yaml"
-apiVersion: csi.hitachi.com/v1
-kind: GadPairAction
-metadata:
-  name: gadpairaction-resync
-  namespace: <namespace>
-spec:
-  action: resync
-  storageClassName: sc-stretched
-  persistentVolumeClaimName: pvc-stretched-sample
+    maxRetries: 2                        # (5) Optional
+    interval: 120s                       # (6) Optional
 ```
 
 Apply the action and monitor its status:
 
 ```bash
-kubectl apply -f gadpairaction-split.yaml
-kubectl describe gadpairaction gadpairaction-split -n <namespace>
+kubectl apply -f gadpairaction-sample.yaml
+kubectl describe gadpairaction gadpairaction-sample -n <namespace>
 ```
 
-| Field                            | Description                                                       |
-| -------------------------------- | ----------------------------------------------------------------- |
-| `spec.action`                    | `split` to suspend replication, or `resync` to resume replication |
-| `spec.storageClassName`          | The Stretched PVC StorageClass name                               |
-| `spec.persistentVolumeClaimName` | Optional. Scope the action to a specific PVC.                     |
-| `spec.retryPolicy.maxRetries`    | Optional. Number of retries on failure.                           |
+| Field                                   | Description                                                                                                            |
+| --------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `spec.action`                           | `split` to suspend replication, or `resync` to resume replication                                                      |
+| `spec.remoteMirrorCopyPairId`           | Optional. The copy pair ID. If not specified, the pair is identified using the PVC name.                               |
+| `spec.storageClassName`                 | The Stretched PVC StorageClass name                                                                                    |
+| `spec.source.persistentVolumeClaimName` | Optional. Scope the action to a specific PVC. If not specified, the pair is identified using `remoteMirrorCopyPairId`. |
+| `spec.retryPolicy.maxRetries`           | Optional. Maximum number of retry attempts (integer, e.g. `2`).                                                        |
+| `spec.retryPolicy.interval`             | Optional. Time interval between retry attempts (e.g. `120s` or `2mins`).                                               |
 
 :::note
 Stretched PVC metrics collection by HSPP is **not supported**.
@@ -1521,6 +1634,10 @@ kubectl delete sc sc-sample
 kubectl delete secret secret-sample
 ```
 
+:::note
+On VSP One B20 series storage systems, if the PVC is cloned, you must first delete the cloned PVC before deleting the parent PVC.
+:::
+
 ## PVC Error Handling
 
 - **Creation failure:** A PVC object may be created without a corresponding PV. Delete the PVC:
@@ -1535,7 +1652,7 @@ kubectl delete secret secret-sample
 
 ## Raw Block Volume
 
-ReadWriteMany access requires raw block volume mode:
+ReadWriteMany access requires raw block volume mode. This configuration is intended specifically for raw block mode RWX to support KubeVirt deployments, such as OpenShift virtualization. It is not designed for general-purpose RWX usage. Use VSP One File for regular RWX PVCs.
 
 ```yaml title="pvc-sample-rwx-raw.yaml"
 apiVersion: v1
@@ -1572,7 +1689,29 @@ spec:
 
 ## ReadOnlyMany
 
-ReadOnlyMany mode can be used by creating a PVC with ReadOnlyMany access mode. The volume is mounted as read-only on all consumer Pods.
+To create a PersistentVolumeClaim with ReadOnlyMany, you must create the PVC from an existing PVC. Use the clone manifest from [Cloning a PVC](/container-plugins/hspc/v3.18.0/quick-reference/storage-classes.md#cloning-a-pvc) and specify `ReadOnlyMany` as the access mode:
+
+```yaml title="pvc-rox-sample.yaml"
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-rox-sample
+spec:
+  dataSource:
+    name: pvc-sample
+    kind: PersistentVolumeClaim
+    apiGroup: ""
+  accessModes:
+    - ReadOnlyMany
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: sc-sample
+```
+
+:::note
+This feature is not supported on VSP One SDS Block.
+:::
 
 
 
@@ -1627,17 +1766,38 @@ url: /container-plugins/hspc/v3.18.0/quick-reference/expanding-volumes.md
 
 HSPC supports online volume expansion. The StorageClass must have `allowVolumeExpansion: true` (which is set in the sample StorageClass by default).
 
+:::warning
+Confirm completion of volume expansion with `kubectl get pvc`, which displays the updated CAPACITY. Do not shut down the OS or drain the node before volume expansion completes.
+:::
+
 :::note
-Each expansion must add at least **+1 GiB** and at most **+7 TiB** per operation. Before you drain a node or shut down the OS, confirm that expansion has finished successfully.
+Volume expansion has the following restrictions:
+
+- On VSP One B20 series storage systems, you cannot expand a cloned PVC to a capacity greater than its parent volume.
+- The minimum additional size for volume expansion is 1 GiB.
+- The maximum additional size for volume expansion is 7 TiB, or a value that does not exceed the warning threshold of pool capacity. If you add more than 7 TiB, run the command again.
+- Volume capacity cannot be reduced.
+- If `allowVolumeExpansion` of the StorageClass is set to `false`, a PersistentVolume created with this setting cannot be expanded.
+- The size obtained by `kubectl get pv <PV-name> -o yaml` is not updated after expansion. To get the updated size, use `kubectl get pv <PV-name>`, which is displayed in `CAPACITY`.
+  :::
+
+:::caution
+Use the `kubectl` command to change the size of an LDEV created with Storage Plug-in for Containers. After you apply the patch for volume expansion, if the PVC is not attached to a Pod, you must expand the filesystem from within the node.
 :::
 
 ## Procedure
 
 ### Edit the PVC to request more storage
+You can expand using either `kubectl edit` or `kubectl patch`:
 ```bash
 kubectl edit pvc pvc-sample
 ```
-Update the storage request:
+Or use `kubectl patch`:
+```bash
+kubectl patch pvc pvc-sample --patch \
+  '{"spec":{"resources":{"requests":{"storage": "10Gi"}}}}'
+```
+Update the storage request to the new desired size:
 ```yaml
 spec:
   resources:
@@ -1645,6 +1805,7 @@ spec:
       storage: 10Gi
 ```
 ### Verify the PVC capacity has been updated
+Confirm completion by checking `CAPACITY` in the output:
 ```bash
 kubectl get pvc pvc-sample
 ```
@@ -1741,17 +1902,27 @@ See [Installing HSPC](/container-plugins/hspc/v3.18.0/quick-reference/installati
 **OpenShift**
 
 ### Uninstall on OpenShift
-1. Delete the HSPC instance (CustomResource) from the Operator Details page.
-2. Uninstall the Operator from **Installed Operators** in the OpenShift web console.
+1. Delete all Pods that use volumes created by Storage Plug-in for Containers.
+2. Delete the VolumeSnapshotClass, VolumeSnapshot, PersistentVolumeClaim, StorageClass, and Secret that were created for Storage Plug-in for Containers.
+3. Delete the HSPC instance (CustomResource) from the Operator Details page.
+4. Uninstall the Operator from **Installed Operators** in the OpenShift web console.
 
 
 **Kubernetes**
 
 ### Uninstall on Kubernetes
-### Delete all Pods and PVCs managed by HSPC
+### Delete all Pods using HSPC volumes
 ```bash
 kubectl delete pod <pod-name>
+```
+### Delete HSPC-created resources
+Delete the VolumeSnapshotClass, VolumeSnapshot, PersistentVolumeClaim, StorageClass, and Secret that were created for Storage Plug-in for Containers:
+```bash
 kubectl delete pvc <pvc-name>
+kubectl delete volumesnapshot <snapshot-name>
+kubectl delete volumesnapshotclass <snapshotclass-name>
+kubectl delete storageclass <sc-name>
+kubectl delete secret <secret-name>
 ```
 ### Delete the HSPC instance
 ```bash
@@ -1765,6 +1936,8 @@ kubectl delete -f hspc-operator.yaml
 ```bash
 kubectl delete -f hspc-operator-namespace.yaml
 ```
+### Delete the image pull Secret (if applicable)
+If you created a Secret to pull an image, delete that Secret as well.
 
 
 
@@ -1775,11 +1948,11 @@ url: /container-plugins/hspc/v3.18.0/quick-reference/telemetry.md
 
 # Telemetry
 
-HSPC includes an optional telemetry service that periodically sends usage data to Hitachi Vantara. Telemetry helps improve the product by providing aggregate insights into deployment patterns and storage usage.
+HSPC includes an optional telemetry service that periodically sends usage data to Hitachi Vantara. Telemetry enables Hitachi to analyze your storage usage patterns to support business insights and analytics.
 
 ## Default Behavior
 
-Telemetry is **enabled by default**. Data is sent to Hitachi Vantara only — not shared with any third parties.
+Telemetry is **enabled by default**. The collected data is visible only to the vendor (Hitachi) and is not shared with any third parties.
 
 | Sync Interval    | Scope              |
 | ---------------- | ------------------ |
@@ -1819,31 +1992,28 @@ The telemetry service requires outbound connectivity from the cluster:
 
 ## Disabling Telemetry
 
-To disable telemetry, edit the `hspc-csi-telemetry-config` ConfigMap in the HSPC namespace:
+To disable telemetry:
 
-```bash
-kubectl edit configmap hspc-csi-telemetry-config -n <namespace>
-```
+1. Scale down the `hspc-operator-controller-manager`:
 
-Set `awsEnabled` to `"false"`:
+   ```bash
+   kubectl scale deployment hspc-operator-controller-manager --replicas=0 -n <namespace>
+   ```
 
-```yaml
-data:
-  awsEnabled: "false"
-```
+2. Edit the Telemetry ConfigMap:
 
-Save the file. The telemetry service will stop sending data on the next sync cycle.
+   ```bash
+   kubectl edit configmap hspc-csi-telemetry-config -n <namespace>
+   ```
 
-:::note
-Alternatively, scale the HSPC operator to 0 replicas before editing the ConfigMap to ensure the change is applied cleanly:
+3. Set `awsEnabled` to `"false"`:
 
-```bash
-kubectl scale deployment hspc-operator-controller-manager --replicas=0 -n hspc-operator-system
-kubectl edit configmap hspc-csi-telemetry-config -n <namespace>
-kubectl scale deployment hspc-operator-controller-manager --replicas=1 -n hspc-operator-system
-```
+   ```yaml
+   data:
+     awsEnabled: "false"
+   ```
 
-:::
+4. Save the configuration changes.
 
 
 
@@ -1874,7 +2044,12 @@ The manifest is published in the HSPC GitHub repository for this product version
 **Repository path:** `csi-operator-hitachi/hspc/<version>/sample/consoleplugin-ocp-ui.yaml`
 
 ### Obtain the manifest
-Either clone the repository and check out the tag or branch that matches your HSPC version, or download the raw file from GitHub.
+First, connect to the OpenShift cluster master node and log in:
+```bash
+ssh <username>@<node-ip-address>
+oc login <cluster-api-endpoint> --username=<username> --password=<password>
+```
+Then clone the repository:
 ```bash
 git clone https://github.com/hitachi-vantara/csi-operator-hitachi
 cd csi-operator-hitachi/hspc/v3.18.0/sample
@@ -1882,7 +2057,7 @@ cd csi-operator-hitachi/hspc/v3.18.0/sample
 (Use the `v<x.y.z>` directory that matches your installed HSPC version.)
 ### Apply the manifest
 ```bash
-oc apply -f consoleplugin-ocp-ui.yaml
+oc create -f consoleplugin-ocp-ui.yaml
 ```
 The manifest creates a dedicated namespace, Deploys the plugin frontend, registers a `ConsolePlugin` resource, and runs a short Job that merges the plugin into the cluster console configuration.
 ### Verify registration
@@ -2038,18 +2213,35 @@ spec:
     containers:
       - name: csi-provisioner
         args:
-          - "--worker-threads=10"
+          - --csi-address=/csi/csi-controller.sock
+          - --timeout=300s
+          - --v=5
+          - --worker-threads=10
+          - --default-fstype=ext4
 ```
 
-The default is 20. A value of 10 is recommended for high-concurrency environments.
+The default is 20. A value of 10 is recommended for high-concurrency environments. If the problem persists, contact technical support.
 
 ## Host Group Naming Errors (0x00001023)
 
-If error `0x00001023` appears, HSPC cannot find a host group matching its naming rule. Verify that all host groups for HSPC nodes follow the `spc-<wwn1>-<wwn2>-<wwn3>` naming convention. See [Host Group and iSCSI Target Naming Rules](/container-plugins/hspc/v3.18.0/quick-reference/overview.md#host-group-and-iscsi-target-naming-rules).
+If error `0x00001023` appears, HSPC cannot find a host group matching its naming rule (`spc-<wwn1>-<wwn2>-<wwn3>`). The error was likely caused by a host group whose name does not follow the naming format.
+
+To resolve:
+
+1. Delete Storage Plug-in for Containers. See [Uninstalling HSPC](/container-plugins/hspc/v3.18.0/quick-reference/uninstalling.md#uninstalling-hspc) and [Re-creating HSPC](/container-plugins/hspc/v3.18.0/quick-reference/uninstalling.md#re-creating-hspc).
+2. Delete the host group specified in the error message.
+3. Search for host groups that have WWNs for each host, and delete them or rename them to `spc-<wwn1>-<wwn2>-<wwn3>`.
+4. Re-create Storage Plug-in for Containers. See [Re-creating HSPC](/container-plugins/hspc/v3.18.0/quick-reference/uninstalling.md#re-creating-hspc).
+
+See [Host Group and iSCSI Target Naming Rules](/container-plugins/hspc/v3.18.0/quick-reference/overview.md#host-group-and-iscsi-target-naming-rules) for the full naming convention.
 
 ## Notes on Force-Deleting a Pod
 
-Forcibly deleting a Pod (`kubectl delete pod --force --grace-period=0`) while it has an HSPC-managed volume attached can leave the volume in an inconsistent state. Before doing this:
+Forcibly deleting a Pod (`kubectl delete pod --force --grace-period=0`) while it has an HSPC-managed volume attached can leave the deleted Pod and information about the associated PVC on the node, which may cause unexpected errors.
+
+To properly delete this information, you must restart the relevant node before using the node again.
+
+Before force-deleting:
 
 1. Verify the node where the Pod was running is completely down or the volume is no longer attached.
 2. After force-deletion, verify the volume is not still attached to the node in the storage system.
@@ -2085,11 +2277,31 @@ If a Kubernetes pod cannot be scheduled or created:
 
 ## Virtual LDEV ID Errors (HSPC0x0000b007)
 
-Virtual LDEV ID errors occur when the LDEV ID on the storage system conflicts with an HSPC-managed LDEV. To resolve:
+Virtual LDEV ID errors occur when an invalid or undefined Virtual LDEV ID is associated with a physical LDEV. The error message looks like:
 
-1. Check the LDEV using Storage Navigator.
-2. Use `raidcom` to remap the LDEV if required.
-3. Ensure no LDEV nickname starting with `spc-` is managed outside of HSPC.
+```
+Internal desc = [HSPC0x0000b007] a virtual LDEV ID is defined : remove the virtual LDEV ID, and consider using resource partitioning feature if it is not already configured : ldev [140] has a virtual ldev id [140]
+```
+
+To resolve using the `raidcom` utility (other tools can also be used):
+
+1. **Verify the LDEV status:**
+   ```bash
+   raidcom get ldev -ldev_id <ldev-id> -fx
+   ```
+   Check the `VIR_LDEV` parameter. If the value is `fffe`, it indicates an invalid virtual LDEV entry is mapped.
+
+2. **Remap the virtual LDEV:**
+   ```bash
+   raidcom map resource -ldev_id <ldev-id> -virtual_ldev_id <ldev-id>
+   ```
+   Use the same LDEV ID for both parameters. This clears the invalid mapping.
+
+3. **Reverify the LDEV status:**
+   ```bash
+   raidcom get ldev -ldev_id <ldev-id> -fx
+   ```
+   Verify using the same LDEV ID. If no virtual LDEV is listed under `VIR_LDEV`, the invalid entry has been successfully removed.
 
 ## Advanced Configuration
 
@@ -2155,12 +2367,16 @@ There is no in-place migration of existing PV port assignments via Kubernetes. T
 
 By default, HSPC supports up to **256 LUNs** per node. You can increase this up to a maximum of **2048** using the `SPC_LUN_MAX` environment variable.
 
+:::warning
+Do not set the value for `SPC_LUN_MAX` greater than 2048.
+:::
+
 :::tip
 For host-level OS configuration required to support more than 256 volumes (kernel arguments, MachineConfig for OpenShift, or DaemonSet for RKE2/vanilla Kubernetes), see [Supporting More Than 256 Volumes per Host](/container-plugins/csi-best-practices/openshift.md#more-than-256-volumes) in the CSI Best Practices Guide.
 :::
 
 :::note
-Check your kernel and HBA limits before increasing this value. Exceeding HBA limits can cause instability.
+Changing the environment value of `SPC_LUN_MAX` also requires appropriate kernel-level configuration based on the HBA driver. Refer to the vendor-specific guide to verify settings.
 :::
 
 Scale the operator to 0 replicas before editing to prevent the operator from reverting changes:
@@ -2244,7 +2460,7 @@ git clone https://github.com/hitachi-vantara/csi-operator-hitachi
 cd csi-operator-hitachi/log_collector/hspc/Hitachi-CSI-Log-Bundle
 ```
 
-Run the collection script (bash):
+Run the collection script from the CSI Controller node (bash):
 
 ```bash
 ./get_hitachicsilogs.sh
@@ -2261,7 +2477,7 @@ The community-maintained **CSI Log Bundle Viewer** can display the collected log
 You can deploy virtual machines from templates using StorageClass clone strategy options. This is supported only on OpenShift Virtualization. Using this method accelerates VM provisioning and ensures that PVCs created for new VMs support volume resizing.
 
 :::note
-If VMs need disk expansion, you must configure host-based cloning before creating the template. Templates provide a repeatable, maintenance-free way to deploy VMs and ensure DataSource references are correctly set before VM creation.
+If the VMs need disk expansion, you must configure host-based cloning. Templates provide a repeatable, maintenance-free way to deploy VMs and ensure DataSource references are correctly set before VM creation.
 :::
 
 :::tip
@@ -3415,7 +3631,7 @@ A Replication Group CR represents a one-to-one copy group relationship. Replicat
 - Hitachi recommends that you do **not** perform replication pair-level operations if the pair is part of a copy group managed by a parent Replication Group. To manage pairs independently, set `desiredPairState` to `none` in the Replication Group CR at both sites.
 - You **cannot** add or move an existing replication pair across a copy group. A pair can only be associated with a copy group during creation.
 - You **cannot** use an existing copy group name not created by HRPC.
-- Hitachi recommends using the same replication type (UR or TC) and the same consistency group ID for all pairs in the same copy group.
+- Hitachi recommends using the same replication type (UR or TC) and the same consistency group ID for all pairs in the same copy group. For Universal Replicator, use the same journal ID.
 
 :::
 
@@ -3455,18 +3671,18 @@ spec:
   svolJournalId: 2                               # (9) Required for UR
   parentName: <ReplicationGroup-CR-name>         # (10) Optional
 ```
-| Field | Description                                                                                                                                                 |
-| ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| (1)   | Target PVC protected by TrueCopy or Universal Replicator                                                                                                    |
-| (2)   | StorageClass name from which the target PVC was created                                                                                                     |
-| (3)   | _(Optional)_ Unique, case-sensitive name, 1–29 characters, **must start with `spc-`** prefix                                                                |
-| (4)   | _(Optional when copyGroupName set)_ Unique, case-sensitive name, 1–31 characters, **must start with `spc-`** prefix. Cannot be set without `copyGroupName`. |
-| (5)   | `TC` for TrueCopy pair or `UR` for Universal Replicator pair                                                                                                |
-| (6)   | `NEVER`, `DATA`, or `STATUS`. Mandatory for TrueCopy; optional for Universal Replicator.                                                                    |
-| (7)   | _(Optional)_ Consistency Group ID, 0–255. For VSP E590/E790: 0–127. Cannot be set without `copyGroupName`. Assign unique IDs per copy group.                |
-| (8)   | P-Vol Journal ID. Required for UR when `copyGroupName` is set; optional for TC. Assign unique IDs per copy group.                                           |
-| (9)   | S-Vol Journal ID. Required for UR when `copyGroupName` is set; optional for TC. Assign unique IDs per copy group.                                           |
-| (10)  | _(Optional)_ Name of the Replication Group CR that manages operations for this copy group                                                                   |
+| Field | Description                                                                                                                                                                                                                |
+| ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| (1)   | Target PVC protected by TrueCopy or Universal Replicator                                                                                                                                                                   |
+| (2)   | StorageClass name from which the target PVC was created                                                                                                                                                                    |
+| (3)   | _(Optional)_ Unique, case-sensitive name, 1–29 characters, **must start with `spc-`** prefix. Omitting the prefix will cause an error.                                                                                     |
+| (4)   | _(Optional when copyGroupName set)_ Unique, case-sensitive name, 1–31 characters, **must start with `spc-`** prefix. Omitting the prefix will cause an error. Cannot be set without `copyGroupName`.                       |
+| (5)   | `TC` for TrueCopy pair or `UR` for Universal Replicator pair                                                                                                                                                               |
+| (6)   | `NEVER`, `DATA`, or `STATUS`. Mandatory for TrueCopy; optional for Universal Replicator.                                                                                                                                   |
+| (7)   | _(Optional)_ Consistency Group ID, 0–255. For VSP E590/E790: 0–127. Cannot be set without `copyGroupName`. You cannot have multiple consistency group IDs for the same `copyGroupName`. Assign a unique ID per copy group. |
+| (8)   | P-Vol Journal ID. Required for UR when `copyGroupName` is set; optional for TC. Assign unique IDs per copy group.                                                                                                          |
+| (9)   | S-Vol Journal ID. Required for UR when `copyGroupName` is set; optional for TC. Assign unique IDs per copy group.                                                                                                          |
+| (10)  | _(Optional)_ Name of the Replication Group CR that manages operations for this copy group                                                                                                                                  |
 :::note
 When multiple Replication CRs are created with the **same copy group name** but different copy pair names, all copy pairs are grouped under the same copy group.
 :::
@@ -3513,6 +3729,9 @@ KUBECONFIG=${KUBECONFIG_P} kubectl get replicationgroup
 NAME                    STATUS   DESIREDSTATE   OPERATION   AGE
 replicationgroup-sample Split    split          none        6d20h
 ```
+:::note
+The replication pair status for all copy groups managed by the replication group will be in the Split state.
+:::
 ### Verify the Replication CR status is Split
 ```bash
 KUBECONFIG=${KUBECONFIG_P} kubectl get replication
@@ -3847,7 +4066,7 @@ Temporarily stops data replication, allowing independent access to the secondary
 kubectl patch drpolicy <drpolicy-cr-name> --type=merge -p '{"spec": {"desiredState":"split"}}'
 ```
 
-Verify:
+Verify the DR policy is applied on both sites:
 
 ```bash
 kubectl get drpolicy
@@ -3856,6 +4075,19 @@ kubectl get drpolicy
 ```
 NAME                 SOURCE_CLUSTER  TARGET_CLUSTER  REPLICATION_TYPE  DESIRED_STATE  STATUS     CTG_ID  AGE
 sample-app-drpolicy  site-61         site-62         sync              split          Unhealthy  21      18m
+```
+
+Verify the replication status of the PVCs:
+
+```bash
+kubectl get replication -A
+```
+
+```
+NAMESPACE  NAME                                                    STATUS  DESIREDSTATE  OPERATION  AGE
+wp-app     replication--my-app-drpolicy--wp-content-pvc           Split   split         none       20m
+wp-db      replication--my-app-drpolicy--mysql-data-mysql-0       Split   split         none       20m
+wp-db      replication--my-app-drpolicy--mysql-logs-mysql-0       Split   split         none       20m
 ```
 
 ## Failover Using the DR Operator
@@ -3868,10 +4100,34 @@ Promotes the secondary volume to primary when the original primary site becomes 
 kubectl patch drpolicy <drpolicy-cr-name> --type=merge -p '{"spec": {"desiredState":"failover"}}'
 ```
 
+Verify the DR policy is applied on both sites:
+
+```bash
+kubectl get drpolicy
+```
+
+```
+NAME                 SOURCE_CLUSTER  TARGET_CLUSTER  REPLICATION_TYPE  DESIRED_STATE  STATUS     CTG_ID  AGE
+sample-app-drpolicy  site-61         site-62         sync              failover       Unhealthy  21      20m
+```
+
+Verify the replication status of the PVCs:
+
+```bash
+kubectl get replication -A
+```
+
+```
+NAMESPACE  NAME                                               STATUS    DESIREDSTATE  OPERATION  AGE
+wp-app     replication--my-app-drpolicy--wp-content-pvc      Failover  failover      none       139m
+wp-db      replication--my-app-drpolicy--mysql-data-mysql-0  Failover  failover      none       139m
+wp-db      replication--my-app-drpolicy--mysql-logs-mysql-0  Failover  failover      none       140m
+```
+
 :::note
 
 - After failover completes, VMs power on and deployment pods scale up at the secondary site.
-- If the namespace range for an application differs between primary and secondary sites, pods may not scale up automatically. Update the `fsGroup` value to the namespace range of the secondary site.
+- If the namespace range for an application differs between primary and secondary sites, pods may not scale up automatically and an error message will be displayed. Update the `fsGroup` value to the namespace range of the secondary site.
 
 :::
 
@@ -3892,6 +4148,32 @@ This operation is **not supported** for Universal Replicator pairs when multiple
 kubectl patch drpolicy <drpolicy-cr-name> --type=merge -p '{"spec": {"desiredState":"swap-resync"}}'
 ```
 
+Verify the DR policy is applied on both sites:
+
+```bash
+kubectl get drpolicy
+```
+
+```
+NAME                 SOURCE_CLUSTER  TARGET_CLUSTER  REPLICATION_TYPE  DESIRED_STATE  STATUS     CTG_ID  AGE
+sample-app-drpolicy  site-61         site-62         sync              swap-resync    Unhealthy  21      25m
+```
+
+Verify the replication status of the PVCs:
+
+```bash
+kubectl get replication -A
+```
+
+```
+NAMESPACE  NAME                                                        STATUS  DESIREDSTATE  OPERATION    AGE
+demo-app   replication--apps-1-drpolicy-sync--demo-server-pvc         Pair    swap-resync   swap-resync  25m
+demo-app   replication--apps-1-drpolicy-sync--demo-ui-pvc             Pair    swap-resync   swap-resync  25m
+demo-db    replication--apps-1-drpolicy-sync--demo-db-pvc             Pair    swap-resync   swap-resync  25m
+```
+
+You must also verify the replication status on the primary site.
+
 ## Failback Using the DR Operator
 
 Restores the original replication direction after a failover, making the recovered site the secondary and reestablishing normal data synchronization.
@@ -3901,6 +4183,32 @@ Perform on the **primary site**:
 ```bash
 kubectl patch drpolicy <drpolicy-cr-name> --type=merge -p '{"spec": {"desiredState":"failback"}}'
 ```
+
+Verify the DR policy is applied on both sites:
+
+```bash
+kubectl get drpolicy
+```
+
+```
+NAME                 SOURCE_CLUSTER  TARGET_CLUSTER  REPLICATION_TYPE  DESIRED_STATE  STATUS   CTG_ID  AGE
+sample-app-drpolicy  site-61         site-62         sync              failback       Healthy  21      35m
+```
+
+Verify the replication status of the PVCs:
+
+```bash
+kubectl get replication -A
+```
+
+```
+NAMESPACE  NAME                                                        STATUS  DESIREDSTATE  OPERATION  AGE
+demo-app   replication--apps-1-drpolicy-sync--demo-server-pvc         Pair    failover      none       42m
+demo-app   replication--apps-1-drpolicy-sync--demo-ui-pvc             Pair    failover      none       42m
+demo-db    replication--apps-1-drpolicy-sync--demo-db-pvc             Pair    failover      none       42m
+```
+
+You must also verify the replication status on the secondary site.
 
 ## Deleting a DR Policy CR
 
